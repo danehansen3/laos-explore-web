@@ -8,6 +8,8 @@ import buggyImg from "@/assets/buggy.jpg";
 import climbingImg from "@/assets/climbing.jpg";
 import ziplineImg from "@/assets/zipline.jpg";
 import tubingImg from "@/assets/tubing.jpg";
+import supImg from "@/assets/sup.jpg";
+import dirtbikeImg from "@/assets/dirtbike.jpg";
 
 const activities = [
   {
@@ -65,6 +67,22 @@ const activities = [
     description: "Relax and float down the Nam Song River on an inner tube, stopping at riverside bars",
     duration: "3-4 hours",
     difficulty: "Easy",
+  },
+  {
+    id: "sup",
+    name: "Stand Up Paddle Boarding",
+    image: supImg,
+    description: "Glide peacefully across calm waters while standing on a paddle board",
+    duration: "2-3 hours",
+    difficulty: "Beginner to Intermediate",
+  },
+  {
+    id: "dirtbike",
+    name: "Dirt Biking",
+    image: dirtbikeImg,
+    description: "Ride through challenging off-road trails and experience the thrill of dirt biking",
+    duration: "3-4 hours",
+    difficulty: "Intermediate to Advanced",
   },
 ];
 

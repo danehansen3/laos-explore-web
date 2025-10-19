@@ -15,6 +15,8 @@ import buggyImg from "@/assets/buggy.jpg";
 import climbingImg from "@/assets/climbing.jpg";
 import ziplineImg from "@/assets/zipline.jpg";
 import tubingImg from "@/assets/tubing.jpg";
+import supImg from "@/assets/sup.jpg";
+import dirtbikeImg from "@/assets/dirtbike.jpg";
 
 const activityDetails = [
   {
@@ -125,6 +127,38 @@ const activityDetails = [
       "Waterproof bag for valuables",
       "River guide and safety briefing",
       "Transportation to starting point and from end point",
+      "Light refreshments",
+    ],
+  },
+  {
+    id: "sup",
+    name: "Stand Up Paddle Boarding",
+    image: supImg,
+    description: "Stand and paddle your way through the calm waters of the Nam Song River, enjoying a unique perspective of Vang Vieng's stunning karst landscape. This peaceful activity provides an excellent full-body workout while allowing you to explore hidden coves and quiet stretches of the river at your own pace.",
+    duration: "2-3 hours",
+    difficulty: "Beginner to Intermediate",
+    whatsIncluded: [
+      "Professional SUP board and paddle",
+      "Life jacket and safety leash",
+      "Basic instruction and technique guidance",
+      "Waterproof bag for personal items",
+      "Transportation to launch point",
+      "Light refreshments",
+    ],
+  },
+  {
+    id: "dirtbike",
+    name: "Dirt Biking",
+    image: dirtbikeImg,
+    description: "Rev your engine and tackle the rugged mountain trails surrounding Vang Vieng on a high-performance dirt bike. Navigate challenging terrain, splash through streams, and experience the raw thrill of off-road motorcycling through some of Laos's most spectacular countryside.",
+    duration: "3-4 hours",
+    difficulty: "Intermediate to Advanced",
+    whatsIncluded: [
+      "Quality dirt bike suitable for terrain",
+      "Full safety gear (helmet, gloves, pads)",
+      "Experienced guide and route planning",
+      "Fuel and basic maintenance",
+      "First aid kit and support vehicle",
       "Light refreshments",
     ],
   },

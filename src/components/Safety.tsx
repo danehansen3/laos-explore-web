@@ -44,6 +44,18 @@ const safetyInfo = [
     protocols: "River safety briefing, guide supervision, emergency response system",
     requirements: "Minimum age 10, basic swimming ability recommended",
   },
+  {
+    activity: "Stand Up Paddle Boarding",
+    equipment: "Professional SUP boards, paddles, life jackets, safety leashes",
+    protocols: "Water safety briefing, technique instruction, guide supervision",
+    requirements: "Minimum age 12, basic swimming ability required, balance and coordination",
+  },
+  {
+    activity: "Dirt Biking",
+    equipment: "Quality dirt bikes, full-face helmets, protective gear and pads",
+    protocols: "Safety briefing, trail assessment, guide escort, support vehicle backup",
+    requirements: "Valid motorcycle license, minimum age 18, previous riding experience required",
+  },
 ];
 
 const companySafety = [
