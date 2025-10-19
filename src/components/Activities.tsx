@@ -2,7 +2,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { MessageCircle } from "lucide-react";
 import kayakingImg from "@/assets/kayaking.jpg";
-import paraglidingImg from "@/assets/paragliding.jpg";
+import paramotorImg from "@/assets/paramotor.jpg";
 import balloonImg from "@/assets/balloon.jpg";
 import buggyImg from "@/assets/buggy.jpg";
 import climbingImg from "@/assets/climbing.jpg";
@@ -18,18 +18,18 @@ const activities = [
     difficulty: "Beginner to Intermediate",
   },
   {
-    id: "paragliding",
-    name: "Paragliding",
-    image: paraglidingImg,
-    description: "Soar above Vang Vieng's dramatic landscape for an unforgettable aerial experience",
+    id: "paramotor",
+    name: "Para Motor Gliding",
+    image: paramotorImg,
+    description: "Soar above Vang Vieng's dramatic landscape with a powered paraglider",
     duration: "2-3 hours",
-    difficulty: "All levels (tandem available)",
+    difficulty: "All levels",
   },
   {
     id: "balloon",
     name: "Hot Air Balloon",
     image: balloonImg,
-    description: "Float peacefully over misty mountains and rice paddies at sunrise",
+    description: "Float peacefully over misty mountains and rice paddies at sunrise or sunset",
     duration: "3 hours",
     difficulty: "All levels",
   },
@@ -53,7 +53,7 @@ const activities = [
     id: "zipline",
     name: "Zip-line",
     image: ziplineImg,
-    description: "Fly through the jungle canopy on Southeast Asia's longest zipline courses",
+    description: "Fly through the jungle canopy on an exhilarating zipline adventure",
     duration: "3 hours",
     difficulty: "All levels",
   },

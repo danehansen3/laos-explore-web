@@ -9,7 +9,7 @@ import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 
 import kayakingImg from "@/assets/kayaking.jpg";
-import paraglidingImg from "@/assets/paragliding.jpg";
+import paramotorImg from "@/assets/paramotor.jpg";
 import balloonImg from "@/assets/balloon.jpg";
 import buggyImg from "@/assets/buggy.jpg";
 import climbingImg from "@/assets/climbing.jpg";
@@ -29,31 +29,29 @@ const activityDetails = [
       "Waterproof bag for personal items",
       "Light refreshments and drinking water",
       "Hotel pickup and drop-off",
-      "Insurance coverage",
     ],
   },
   {
-    id: "paragliding",
-    name: "Paragliding",
-    image: paraglidingImg,
-    description: "Experience the thrill of soaring above Vang Vieng's breathtaking landscape. Feel the wind beneath your wings as you glide over rivers, mountains, and rice paddies, taking in panoramic views that will leave you speechless. Perfect for both beginners and experienced flyers.",
+    id: "paramotor",
+    name: "Para Motor Gliding",
+    image: paramotorImg,
+    description: "Experience the thrill of powered flight above Vang Vieng's breathtaking landscape. Feel the freedom as you soar with a motorized paraglider over rivers, mountains, and rice paddies, taking in panoramic views that will leave you speechless.",
     duration: "2-3 hours",
-    difficulty: "All levels (tandem available)",
+    difficulty: "All levels",
     whatsIncluded: [
-      "Certified paragliding equipment",
-      "Licensed tandem pilot for beginners",
+      "Certified para motor equipment",
+      "Professional pilot and instructor",
       "Safety helmet and harness",
       "Pre-flight safety briefing and training",
       "Action camera footage of your flight",
       "Transportation to launch site",
-      "Insurance coverage",
     ],
   },
   {
     id: "balloon",
     name: "Hot Air Balloon",
     image: balloonImg,
-    description: "Float peacefully above Vang Vieng at sunrise, watching the mist lift from the valleys below as the first light illuminates the dramatic karst landscape. This serene experience offers unmatched photo opportunities and memories that will last a lifetime.",
+    description: "Float peacefully above Vang Vieng at sunrise or sunset, watching the mist lift from the valleys or the golden light paint the dramatic karst landscape. This serene experience offers unmatched photo opportunities and memories that will last a lifetime.",
     duration: "3 hours (including preparation)",
     difficulty: "All levels",
     whatsIncluded: [
@@ -63,7 +61,6 @@ const activityDetails = [
       "Transportation to and from launch site",
       "Flight certificate",
       "Professional photos of your experience",
-      "Full insurance coverage",
     ],
   },
   {
@@ -96,14 +93,13 @@ const activityDetails = [
       "Beginner instruction or advanced route guidance",
       "Transportation to climbing sites",
       "Lunch and refreshments",
-      "Full insurance coverage",
     ],
   },
   {
     id: "zipline",
     name: "Zip-line",
     image: ziplineImg,
-    description: "Fly through the jungle canopy on one of Southeast Asia's most spectacular zipline courses. With multiple lines ranging from gentle glides to heart-pounding speeds, you'll experience the forest from a completely unique perspective while our safety systems keep you secure.",
+    description: "Fly through the jungle canopy on a spectacular zipline course. With multiple lines ranging from gentle glides to heart-pounding speeds, you'll experience the forest from a completely unique perspective while our safety systems keep you secure.",
     duration: "3 hours",
     difficulty: "All levels",
     whatsIncluded: [
@@ -113,7 +109,6 @@ const activityDetails = [
       "Double-hook safety system",
       "Transportation to zip-line course",
       "Light refreshments",
-      "Insurance coverage",
     ],
   },
 ];

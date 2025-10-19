@@ -9,9 +9,9 @@ const safetyInfo = [
     requirements: "Minimum age 10, basic swimming ability recommended",
   },
   {
-    activity: "Paragliding",
-    equipment: "Certified paragliding equipment, helmets, two-way radios",
-    protocols: "Pre-flight safety check, tandem flights with certified pilots, weather monitoring",
+    activity: "Para Motor Gliding",
+    equipment: "Certified para motor equipment, helmets, two-way radios",
+    protocols: "Pre-flight safety check, flights with certified pilots, weather monitoring",
     requirements: "Minimum age 12, weight limit 100kg, no heart conditions",
   },
   {
@@ -53,8 +53,8 @@ const companySafety = [
   },
   {
     icon: Users,
-    title: "Insurance Covered",
-    description: "Comprehensive insurance coverage for all activities and participants",
+    title: "Safety First",
+    description: "Comprehensive safety protocols for all activities and participants",
   },
   {
     icon: FileCheck,
