@@ -38,14 +38,14 @@ const packages = [
 export const TourPackages = () => {
   const handleBooking = (packageName: string) => {
     window.open(
-      `https://wa.me/8562012345678?text=Hi! I'd like to book the ${packageName} package`,
+      `https://wa.me/8562093439140?text=Hi! I'd like to book the ${packageName} package`,
       "_blank"
     );
   };
 
   const handleCustomTour = () => {
     window.open(
-      "https://wa.me/8562012345678?text=Hi! I'd like to create a custom tour package",
+      "https://wa.me/8562093439140?text=Hi! I'd like to create a custom tour package",
       "_blank"
     );
   };

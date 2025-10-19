@@ -32,7 +32,7 @@ export const Navbar = () => {
   };
 
   const handleWhatsApp = () => {
-    window.open("https://wa.me/8562012345678?text=Hi! I'm interested in booking a tour", "_blank");
+    window.open("https://wa.me/8562093439140?text=Hi! I'm interested in booking a tour", "_blank");
   };
 
   return (

@@ -7,6 +7,7 @@ import balloonImg from "@/assets/balloon.jpg";
 import buggyImg from "@/assets/buggy.jpg";
 import climbingImg from "@/assets/climbing.jpg";
 import ziplineImg from "@/assets/zipline.jpg";
+import tubingImg from "@/assets/tubing.jpg";
 
 const activities = [
   {
@@ -57,12 +58,20 @@ const activities = [
     duration: "3 hours",
     difficulty: "All levels",
   },
+  {
+    id: "tubing",
+    name: "Tubing",
+    image: tubingImg,
+    description: "Relax and float down the Nam Song River on an inner tube, stopping at riverside bars",
+    duration: "3-4 hours",
+    difficulty: "Easy",
+  },
 ];
 
 export const Activities = () => {
   const handleBooking = (activityName: string) => {
     window.open(
-      `https://wa.me/8562012345678?text=Hi! I'd like to book ${activityName}`,
+      `https://wa.me/8562093439140?text=Hi! I'd like to book ${activityName}`,
       "_blank"
     );
   };

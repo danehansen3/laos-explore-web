@@ -38,6 +38,12 @@ const safetyInfo = [
     protocols: "Weight check, platform safety briefing, double-hook safety system",
     requirements: "Weight range 30-120kg, minimum age 7, closed-toe shoes",
   },
+  {
+    activity: "Tubing",
+    equipment: "High-quality inner tubes, life jackets, waterproof bags",
+    protocols: "River safety briefing, guide supervision, emergency response system",
+    requirements: "Minimum age 10, basic swimming ability recommended",
+  },
 ];
 
 const companySafety = [

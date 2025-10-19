@@ -23,7 +23,7 @@ export const ActivityDetail = ({
 }: ActivityDetailProps) => {
   const handleBooking = () => {
     window.open(
-      `https://wa.me/8562012345678?text=Hi! I'd like to book ${name}`,
+      `https://wa.me/8562093439140?text=Hi! I'd like to book ${name}`,
       "_blank"
     );
   };

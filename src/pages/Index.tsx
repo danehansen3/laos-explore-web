@@ -14,6 +14,7 @@ import balloonImg from "@/assets/balloon.jpg";
 import buggyImg from "@/assets/buggy.jpg";
 import climbingImg from "@/assets/climbing.jpg";
 import ziplineImg from "@/assets/zipline.jpg";
+import tubingImg from "@/assets/tubing.jpg";
 
 const activityDetails = [
   {
@@ -74,7 +75,7 @@ const activityDetails = [
       "Modern buggy car with safety features",
       "Safety helmet and protective gear",
       "Professional guide and route briefing",
-      "Fuel and vehicle insurance",
+      "Fuel and vehicle",
       "First aid kit and communication devices",
       "Light refreshments",
     ],
@@ -108,6 +109,22 @@ const activityDetails = [
       "Certified guides on all platforms",
       "Double-hook safety system",
       "Transportation to zip-line course",
+      "Light refreshments",
+    ],
+  },
+  {
+    id: "tubing",
+    name: "Tubing",
+    image: tubingImg,
+    description: "Experience the classic Vang Vieng adventure! Float down the Nam Song River on a comfortable inner tube, taking in the spectacular scenery at a relaxed pace. Stop at riverside bars and enjoy the laid-back atmosphere that has made tubing a Vang Vieng tradition.",
+    duration: "3-4 hours",
+    difficulty: "Easy",
+    whatsIncluded: [
+      "High-quality inner tube",
+      "Life jacket and safety equipment",
+      "Waterproof bag for valuables",
+      "River guide and safety briefing",
+      "Transportation to starting point and from end point",
       "Light refreshments",
     ],
   },

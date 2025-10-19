@@ -2,7 +2,7 @@ import { MessageCircle, Instagram } from "lucide-react";
 
 export const Footer = () => {
   const handleWhatsApp = () => {
-    window.open("https://wa.me/8562012345678?text=Hi! I'm interested in your tours", "_blank");
+    window.open("https://wa.me/8562093439140?text=Hi! I'm interested in your tours", "_blank");
   };
 
   const currentYear = new Date().getFullYear();
@@ -18,7 +18,7 @@ export const Footer = () => {
             </h3>
             <p className="text-secondary-foreground/80 mb-4">
               Your premier adventure tour operator in Laos, offering unforgettable experiences 
-              with the highest safety standards since 2015.
+              with the highest safety standards since 2016.
             </p>
             <div className="flex gap-4">
               <a
@@ -40,7 +40,7 @@ export const Footer = () => {
                 className="flex items-center gap-2 text-secondary-foreground/80 hover:text-secondary-foreground transition-colors"
               >
                 <MessageCircle className="h-4 w-4" />
-                <span>+856 20 1234 5678</span>
+                <span>+856 20 9343 9140</span>
               </button>
             </div>
           </div>
@@ -52,8 +52,8 @@ export const Footer = () => {
               <p>Monday - Sunday</p>
               <p className="font-semibold">7:00 AM - 7:00 PM</p>
               <p className="mt-4">
-                Main Street, Vang Vieng<br />
-                Vientiane Province, Laos
+                Smiler tour & train ticket&bike for rental<br />
+                WCCW+3CX Namsong Road Vang Vieng
               </p>
             </div>
           </div>

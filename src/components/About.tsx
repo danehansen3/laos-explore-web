@@ -27,7 +27,7 @@ const reasons = [
 
 export const About = () => {
   const handleWhatsApp = () => {
-    window.open("https://wa.me/8562012345678?text=Hi! I'd like to know more about Smiler Tours", "_blank");
+    window.open("https://wa.me/8562093439140?text=Hi! I'd like to know more about Smiler Tours", "_blank");
   };
 
   return (
@@ -40,7 +40,7 @@ export const About = () => {
             </h2>
             <div className="space-y-4 text-lg text-muted-foreground leading-relaxed">
               <p>
-                Founded in 2015, Smiler Tours has been the premier adventure tour operator in 
+                Founded in 2016, Smiler Tours has been the premier adventure tour operator in 
                 Laos, dedicated to showcasing the breathtaking beauty and thrilling activities that make 
                 Vang Vieng a world-class destination.
               </p>

@@ -5,7 +5,7 @@ import { MessageCircle } from "lucide-react";
 export const Contact = () => {
   const handleWhatsApp = () => {
     window.open(
-      "https://wa.me/8562012345678?text=Hi! I'd like to book a tour with Smiler Tours",
+      "https://wa.me/8562093439140?text=Hi! I'd like to book a tour with Smiler Tours",
       "_blank"
     );
   };
@@ -32,7 +32,7 @@ export const Contact = () => {
                 WhatsApp
               </h3>
               <p className="text-muted-foreground mb-6">
-                +856 20 1234 5678
+                +856 20 9343 9140
               </p>
               <Button size="lg" onClick={handleWhatsApp} className="gap-2">
                 <MessageCircle className="h-5 w-5" />
