@@ -11,7 +11,7 @@ const reasons = [
   {
     icon: Heart,
     title: "Safety First",
-    description: "International safety standards with comprehensive insurance coverage",
+    description: "International safety standards with top-quality equipment and trained guides",
   },
   {
     icon: Users,
@@ -27,7 +27,7 @@ const reasons = [
 
 export const About = () => {
   const handleWhatsApp = () => {
-    window.open("https://wa.me/8562012345678?text=Hi! I'd like to know more about your company", "_blank");
+    window.open("https://wa.me/8562012345678?text=Hi! I'd like to know more about Smiler Tours", "_blank");
   };
 
   return (
@@ -36,11 +36,11 @@ export const About = () => {
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="font-heading font-bold text-4xl md:text-5xl mb-6 text-foreground">
-              About Vang Vieng Adventures
+              About Smiler Tours
             </h2>
             <div className="space-y-4 text-lg text-muted-foreground leading-relaxed">
               <p>
-                Founded in 2015, Vang Vieng Adventures has been the premier adventure tour operator in 
+                Founded in 2015, Smiler Tours has been the premier adventure tour operator in 
                 Laos, dedicated to showcasing the breathtaking beauty and thrilling activities that make 
                 Vang Vieng a world-class destination.
               </p>
@@ -91,7 +91,7 @@ export const About = () => {
               </p>
               <Button size="lg" onClick={handleWhatsApp} className="gap-2">
                 <MessageCircle className="h-5 w-5" />
-                Get in Touch
+                Contact for Booking
               </Button>
             </CardContent>
           </Card>
