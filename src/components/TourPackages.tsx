@@ -4,34 +4,39 @@ import { MessageCircle, Sparkles } from "lucide-react";
 
 const packages = [
   {
-    name: "Adventure Combo",
-    activities: ["Rock Climbing", "Zip-line"],
-    duration: "Full Day",
-    description: "Perfect for thrill-seekers wanting to experience the best vertical adventures",
+    name: "Tour 1 - Adventure & Blue Lagoon Experience",
+    activities: ["Water Cave", "Elephant Cave", "Zipline", "Kayaking", "Blue Lagoon"],
+    duration: "9 AM - 5 PM",
+    price: "$45 per person",
+    description: "Complete adventure including caves, zipline, kayaking and the beautiful Blue Lagoon",
   },
   {
-    name: "Full Day Experience",
-    activities: ["Kayaking", "Paragliding", "Hot Air Balloon"],
-    duration: "Full Day + Sunrise",
-    description: "A comprehensive adventure from sunrise balloon rides to sunset kayaking",
+    name: "Tour 2 - Cave & Kayak Adventure",
+    activities: ["Water Cave", "Elephant Cave", "Zipline", "Kayaking"],
+    duration: "9 AM - 4 PM",
+    price: "$35 per person",
+    description: "Explore stunning caves, zipline through the jungle, and kayak the river",
   },
   {
-    name: "Adrenaline Rush",
-    activities: ["Buggy Car", "Zip-line", "Rock Climbing"],
-    duration: "Full Day",
-    description: "Maximum excitement with our most action-packed activities combined",
+    name: "Tour 3 - Cave Explorer",
+    activities: ["Water Cave", "Elephant Cave", "Lunch"],
+    duration: "9 AM - 5 PM",
+    price: "$40 per person",
+    description: "Focus on the amazing cave systems with a relaxing lunch included",
   },
   {
-    name: "Sky & Water",
-    activities: ["Paragliding", "Kayaking"],
-    duration: "Half Day",
-    description: "Experience Vang Vieng from above and below in one incredible package",
+    name: "Tour 4 - Cave & Blue Lagoon Tour",
+    activities: ["Water Cave", "Elephant Cave", "Blue Lagoon"],
+    duration: "9 AM - 4 PM",
+    price: "$30 per person",
+    description: "Experience the best caves and finish with a refreshing swim at Blue Lagoon",
   },
   {
-    name: "Ultimate Adventure",
-    activities: ["All 6 Activities"],
-    duration: "2 Days",
-    description: "The complete Vang Vieng experience - all activities over two amazing days",
+    name: "Tour 5 - Half-Day Kayak & Cave Tour",
+    activities: ["Kayaking", "2 Caves"],
+    duration: "9 AM - 1 PM",
+    price: "$20 per person",
+    description: "Perfect half-day adventure combining kayaking with cave exploration",
   },
 ];
 
@@ -58,7 +63,7 @@ export const TourPackages = () => {
             Tour Packages
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Save time and money with our pre-designed adventure combinations
+            Pre-designed tours with pickup from your hotel or guesthouse included
           </p>
         </div>
 
@@ -86,9 +91,15 @@ export const TourPackages = () => {
                     ))}
                   </div>
                 </div>
-                <div className="text-sm">
-                  <span className="text-muted-foreground">Duration: </span>
-                  <span className="font-semibold">{pkg.duration}</span>
+                <div className="space-y-2 text-sm">
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">Duration:</span>
+                    <span className="font-semibold">{pkg.duration}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">Price:</span>
+                    <span className="font-semibold">{pkg.price}</span>
+                  </div>
                 </div>
                 <Button
                   className="w-full gap-2"

@@ -1,6 +1,7 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { MessageCircle } from "lucide-react";
+import { MessageCircle, ChevronLeft, ChevronRight } from "lucide-react";
+import { useState } from "react";
 import kayakingImg from "@/assets/kayaking.jpg";
 import paramotorImg from "@/assets/paramotor.jpg";
 import balloonImg from "@/assets/balloon.jpg";
@@ -13,91 +14,164 @@ import dirtbikeImg from "@/assets/dirtbike.jpg";
 
 const activities = [
   {
-    id: "kayaking",
-    name: "Kayaking",
-    image: kayakingImg,
-    description: "Paddle through crystal-clear waters surrounded by stunning limestone karsts",
-    duration: "3-4 hours",
-    difficulty: "Beginner to Intermediate",
-  },
-  {
-    id: "paramotor",
-    name: "Para Motor Gliding",
-    image: paramotorImg,
-    description: "Soar above Vang Vieng's dramatic landscape with a powered paraglider",
-    duration: "2-3 hours",
-    difficulty: "All levels",
+    id: "buggy",
+    name: "Buggy Ride",
+    images: [buggyImg, buggyImg],
+    description: "Race through rugged terrain and countryside trails",
+    duration: "Minimum 2 hours",
+    price: "700,000 Kip (2-seater) / 900,000 Kip (4-seater)",
   },
   {
     id: "balloon",
     name: "Hot Air Balloon",
-    image: balloonImg,
-    description: "Float peacefully over misty mountains and rice paddies at sunrise or sunset",
-    duration: "3 hours",
-    difficulty: "All levels",
+    images: [balloonImg, balloonImg],
+    description: "Float peacefully over misty mountains and rice paddies",
+    duration: "25-30 min flight (total trip ~2 hours)",
+    price: "$120 per person",
   },
   {
-    id: "buggy",
-    name: "Buggy Car",
-    image: buggyImg,
-    description: "Race through rugged terrain and countryside trails on an adrenaline-pumping ride",
-    duration: "2-3 hours",
-    difficulty: "Intermediate",
+    id: "paramotor",
+    name: "Paramotor",
+    images: [paramotorImg, paramotorImg],
+    description: "Soar above Vang Vieng's dramatic landscape with powered flight",
+    duration: "15 min flight (total trip ~1 hour)",
+    price: "$65 (May-Sep) / $80 (Oct-Apr)",
   },
   {
     id: "climbing",
     name: "Rock Climbing",
-    image: climbingImg,
-    description: "Challenge yourself on world-class limestone routes with expert guidance",
-    duration: "4-5 hours",
-    difficulty: "Beginner to Advanced",
+    images: [climbingImg, climbingImg],
+    description: "Challenge yourself on world-class limestone routes",
+    duration: "9:30 AM-1:30 PM or 1:30 PM-5:30 PM",
+    price: "650,000 Kip per person (max 3)",
   },
   {
     id: "zipline",
     name: "Zip-line",
-    image: ziplineImg,
-    description: "Fly through the jungle canopy on an exhilarating zipline adventure",
-    duration: "3 hours",
-    difficulty: "All levels",
+    images: [ziplineImg, ziplineImg],
+    description: "Fly through the jungle canopy on 14 platforms",
+    duration: "2 hours total (1 hour zipline)",
+    price: "400,000 Kip per person (max 2)",
   },
   {
     id: "tubing",
     name: "Tubing",
-    image: tubingImg,
-    description: "Relax and float down the Nam Song River on an inner tube, stopping at riverside bars",
-    duration: "3-4 hours",
-    difficulty: "Easy",
+    images: [tubingImg, tubingImg],
+    description: "Float down the Nam Song River, stopping at riverside bars",
+    duration: "Cave: ~30 min / River: 12 PM-5:30 PM (5 km)",
+    price: "$15 per person (max 3)",
   },
   {
     id: "sup",
     name: "Stand Up Paddle Boarding",
-    image: supImg,
-    description: "Glide peacefully across calm waters while standing on a paddle board",
-    duration: "2-3 hours",
-    difficulty: "Beginner to Intermediate",
+    images: [supImg, supImg],
+    description: "Paddle across calm waters with stunning karst views",
+    duration: "6 hours (7 km route), 8 AM-2 PM",
+    price: "$40 per person (max 3)",
   },
   {
     id: "dirtbike",
     name: "Dirt Biking",
-    image: dirtbikeImg,
-    description: "Ride through challenging off-road trails and experience the thrill of dirt biking",
-    duration: "3-4 hours",
-    difficulty: "Intermediate to Advanced",
+    images: [dirtbikeImg, dirtbikeImg],
+    description: "Tackle rugged mountain trails on high-performance bikes",
+    duration: "1-day: 6-7 hours / 2-day available",
+    price: "1-day: $250/person (2 ppl) or $150/person (3 ppl)",
   },
 ];
 
-export const Activities = () => {
-  const handleBooking = (activityName: string) => {
+const ActivityCard = ({ activity }: { activity: typeof activities[0] }) => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const nextImage = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setCurrentImageIndex((prev) => (prev + 1) % activity.images.length);
+  };
+
+  const prevImage = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setCurrentImageIndex((prev) => (prev - 1 + activity.images.length) % activity.images.length);
+  };
+
+  const handleBooking = (e: React.MouseEvent) => {
+    e.stopPropagation();
     window.open(
-      `https://wa.me/8562093439140?text=Hi! I'd like to book ${activityName}`,
+      `https://wa.me/8562093439140?text=Hi! I'd like to book ${activity.name}`,
       "_blank"
     );
   };
 
-  const scrollToActivity = (activityId: string) => {
-    document.querySelector(`#activity-${activityId}`)?.scrollIntoView({ behavior: "smooth" });
-  };
+  return (
+    <Card className="overflow-hidden hover:shadow-glow transition-all duration-300">
+      <div className="relative h-64 overflow-hidden group">
+        <img
+          src={activity.images[currentImageIndex]}
+          alt={`${activity.name} ${currentImageIndex + 1}`}
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 to-transparent" />
+        <h3 className="absolute bottom-4 left-4 font-heading font-bold text-2xl text-primary-foreground">
+          {activity.name}
+        </h3>
+        
+        {/* Navigation buttons */}
+        {activity.images.length > 1 && (
+          <>
+            <button
+              onClick={prevImage}
+              className="absolute left-2 top-1/2 -translate-y-1/2 bg-background/80 hover:bg-background p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+              aria-label="Previous image"
+            >
+              <ChevronLeft className="h-4 w-4" />
+            </button>
+            <button
+              onClick={nextImage}
+              className="absolute right-2 top-1/2 -translate-y-1/2 bg-background/80 hover:bg-background p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+              aria-label="Next image"
+            >
+              <ChevronRight className="h-4 w-4" />
+            </button>
+            
+            {/* Image indicators */}
+            <div className="absolute bottom-2 right-2 flex gap-1">
+              {activity.images.map((_, index) => (
+                <div
+                  key={index}
+                  className={`h-1.5 w-1.5 rounded-full transition-colors ${
+                    index === currentImageIndex ? "bg-primary-foreground" : "bg-primary-foreground/50"
+                  }`}
+                />
+              ))}
+            </div>
+          </>
+        )}
+      </div>
+      <CardHeader>
+        <CardDescription>{activity.description}</CardDescription>
+      </CardHeader>
+      <CardContent className="space-y-3">
+        <div className="space-y-2 text-sm">
+          <div className="flex justify-between">
+            <span className="text-muted-foreground">Duration:</span>
+            <span className="font-medium text-right">{activity.duration}</span>
+          </div>
+          <div className="flex justify-between">
+            <span className="text-muted-foreground">Price:</span>
+            <span className="font-medium text-right">{activity.price}</span>
+          </div>
+        </div>
+        <Button
+          className="w-full gap-2 mt-4"
+          onClick={handleBooking}
+        >
+          <MessageCircle className="h-4 w-4" />
+          Contact for Booking
+        </Button>
+      </CardContent>
+    </Card>
+  );
+};
 
+export const Activities = () => {
   return (
     <section id="activities" className="py-20 bg-muted">
       <div className="container mx-auto px-4">
@@ -106,52 +180,13 @@ export const Activities = () => {
             Our Activities
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Choose from our carefully curated adventure experiences designed for all skill levels
+            Choose from our carefully curated adventure experiences
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {activities.map((activity) => (
-            <Card
-              key={activity.id}
-              className="overflow-hidden hover:shadow-glow transition-all duration-300 cursor-pointer group"
-              onClick={() => scrollToActivity(activity.id)}
-            >
-              <div className="relative h-64 overflow-hidden">
-                <img
-                  src={activity.image}
-                  alt={activity.name}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 to-transparent" />
-                <h3 className="absolute bottom-4 left-4 font-heading font-bold text-2xl text-primary-foreground">
-                  {activity.name}
-                </h3>
-              </div>
-              <CardHeader>
-                <CardDescription>{activity.description}</CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                <div className="flex justify-between text-sm">
-                  <span className="text-muted-foreground">Duration:</span>
-                  <span className="font-medium">{activity.duration}</span>
-                </div>
-                <div className="flex justify-between text-sm">
-                  <span className="text-muted-foreground">Difficulty:</span>
-                  <span className="font-medium">{activity.difficulty}</span>
-                </div>
-                <Button
-                  className="w-full gap-2 mt-4"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleBooking(activity.name);
-                  }}
-                >
-                  <MessageCircle className="h-4 w-4" />
-                  Book via WhatsApp
-                </Button>
-              </CardContent>
-            </Card>
+            <ActivityCard key={activity.id} activity={activity} />
           ))}
         </div>
       </div>
