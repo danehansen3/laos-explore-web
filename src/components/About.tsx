@@ -38,6 +38,14 @@ export const About = () => {
             <h2 className="font-heading font-bold text-4xl md:text-5xl mb-6 text-foreground">
               About Smiler Tours
             </h2>
+            
+            {/* Placeholder Photo */}
+            <div className="mb-8 max-w-2xl mx-auto">
+              <div className="aspect-video bg-muted rounded-lg flex items-center justify-center">
+                <p className="text-muted-foreground">Photo Placeholder</p>
+              </div>
+            </div>
+            
             <div className="space-y-4 text-lg text-muted-foreground leading-relaxed">
               <p>
                 Founded in 2016, Smiler Tours has been the premier adventure tour operator in 

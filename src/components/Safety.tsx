@@ -111,44 +111,6 @@ export const Safety = () => {
           ))}
         </div>
 
-        {/* Activity-Specific Safety */}
-        <div className="space-y-6">
-          <h3 className="font-heading font-bold text-3xl text-center mb-8">
-            Activity Safety Information
-          </h3>
-          {safetyInfo.map((info, index) => (
-            <Card key={index}>
-              <CardHeader>
-                <CardTitle className="font-heading text-2xl text-primary">
-                  {info.activity}
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="grid md:grid-cols-3 gap-6">
-                <div>
-                  <h4 className="font-semibold mb-2 flex items-center gap-2">
-                    <Shield className="h-4 w-4 text-primary" />
-                    Equipment
-                  </h4>
-                  <p className="text-muted-foreground text-sm">{info.equipment}</p>
-                </div>
-                <div>
-                  <h4 className="font-semibold mb-2 flex items-center gap-2">
-                    <FileCheck className="h-4 w-4 text-primary" />
-                    Safety Protocols
-                  </h4>
-                  <p className="text-muted-foreground text-sm">{info.protocols}</p>
-                </div>
-                <div>
-                  <h4 className="font-semibold mb-2 flex items-center gap-2">
-                    <Users className="h-4 w-4 text-primary" />
-                    Requirements
-                  </h4>
-                  <p className="text-muted-foreground text-sm">{info.requirements}</p>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
       </div>
     </section>
   );

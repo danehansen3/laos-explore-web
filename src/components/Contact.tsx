@@ -1,6 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { MessageCircle } from "lucide-react";
+import { MessageCircle, Instagram, Mail } from "lucide-react";
 
 export const Contact = () => {
   const handleWhatsApp = () => {
@@ -8,6 +8,14 @@ export const Contact = () => {
       "https://wa.me/8562093439140?text=Hi! I'd like to book a tour with Smiler Tours",
       "_blank"
     );
+  };
+
+  const handleInstagram = () => {
+    window.open("https://www.instagram.com/smiler_tour_guide/", "_blank");
+  };
+
+  const handleEmail = () => {
+    window.location.href = "mailto:contact@smilertours.com";
   };
 
   return (
@@ -22,7 +30,8 @@ export const Contact = () => {
           </p>
         </div>
 
-        <div className="max-w-md mx-auto">
+        <div className="max-w-md mx-auto space-y-6">
+          {/* WhatsApp - Main Contact */}
           <Card className="text-center">
             <CardContent className="pt-8 pb-8">
               <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
@@ -40,6 +49,39 @@ export const Contact = () => {
               </Button>
             </CardContent>
           </Card>
+
+          {/* Instagram & Email */}
+          <div className="grid grid-cols-2 gap-4">
+            <Card className="text-center">
+              <CardContent className="pt-6 pb-6">
+                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <Instagram className="h-6 w-6 text-primary" />
+                </div>
+                <h4 className="font-heading font-semibold text-lg mb-3">
+                  Instagram
+                </h4>
+                <Button variant="outline" onClick={handleInstagram} className="gap-2">
+                  <Instagram className="h-4 w-4" />
+                  Follow Us
+                </Button>
+              </CardContent>
+            </Card>
+
+            <Card className="text-center">
+              <CardContent className="pt-6 pb-6">
+                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <Mail className="h-6 w-6 text-primary" />
+                </div>
+                <h4 className="font-heading font-semibold text-lg mb-3">
+                  Email
+                </h4>
+                <Button variant="outline" onClick={handleEmail} className="gap-2">
+                  <Mail className="h-4 w-4" />
+                  Email Us
+                </Button>
+              </CardContent>
+            </Card>
+          </div>
         </div>
       </div>
     </section>

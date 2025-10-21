@@ -22,7 +22,9 @@ export const Footer = () => {
             </p>
             <div className="flex gap-4">
               <a
-                href="#"
+                href="https://www.instagram.com/smiler_tour_guide/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 bg-secondary-foreground/10 rounded-full flex items-center justify-center hover:bg-secondary-foreground/20 transition-colors"
                 aria-label="Instagram"
               >
