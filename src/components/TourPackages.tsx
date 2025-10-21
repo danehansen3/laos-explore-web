@@ -1,6 +1,9 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { MessageCircle, Sparkles } from "lucide-react";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { MessageCircle, Sparkles, Info } from "lucide-react";
+import { useState } from "react";
 
 const packages = [
   {
@@ -41,6 +44,8 @@ const packages = [
 ];
 
 export const TourPackages = () => {
+  const [selectedTour, setSelectedTour] = useState<number | null>(null);
+
   const handleBooking = (packageName: string) => {
     window.open(
       `https://wa.me/8562093439140?text=Hi! I'd like to book the ${packageName} package`,
@@ -101,13 +106,23 @@ export const TourPackages = () => {
                     <span className="font-semibold">{pkg.price}</span>
                   </div>
                 </div>
-                <Button
-                  className="w-full gap-2"
-                  onClick={() => handleBooking(pkg.name)}
-                >
-                  <MessageCircle className="h-4 w-4" />
-                  Book Package
-                </Button>
+                <div className="space-y-2">
+                  <Button
+                    className="w-full gap-2"
+                    onClick={() => handleBooking(pkg.name)}
+                  >
+                    <MessageCircle className="h-4 w-4" />
+                    Book Package
+                  </Button>
+                  <Button
+                    variant="outline"
+                    className="w-full gap-2"
+                    onClick={() => setSelectedTour(index)}
+                  >
+                    <Info className="h-4 w-4" />
+                    More Info & Pictures
+                  </Button>
+                </div>
               </CardContent>
             </Card>
           ))}
@@ -138,6 +153,81 @@ export const TourPackages = () => {
             </Button>
           </CardContent>
         </Card>
+
+        {/* Tour Details Dialog */}
+        <Dialog open={selectedTour !== null} onOpenChange={() => setSelectedTour(null)}>
+          <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto">
+            {selectedTour !== null && (
+              <>
+                <DialogHeader>
+                  <DialogTitle className="font-heading text-2xl">
+                    {packages[selectedTour].name}
+                  </DialogTitle>
+                </DialogHeader>
+                
+                <div className="space-y-6">
+                  {/* Image Carousel */}
+                  <Carousel className="w-full">
+                    <CarouselContent>
+                      <CarouselItem>
+                        <div className="aspect-video bg-muted flex items-center justify-center rounded-lg">
+                          <span className="text-muted-foreground">Tour Image 1</span>
+                        </div>
+                      </CarouselItem>
+                      <CarouselItem>
+                        <div className="aspect-video bg-muted flex items-center justify-center rounded-lg">
+                          <span className="text-muted-foreground">Tour Image 2</span>
+                        </div>
+                      </CarouselItem>
+                    </CarouselContent>
+                    <CarouselPrevious />
+                    <CarouselNext />
+                  </Carousel>
+
+                  {/* Tour Details */}
+                  <div className="space-y-4">
+                    <div>
+                      <h3 className="font-semibold text-lg mb-2">Tour Overview</h3>
+                      <p className="text-muted-foreground">{packages[selectedTour].description}</p>
+                    </div>
+
+                    <div>
+                      <h3 className="font-semibold text-lg mb-2">What's Included</h3>
+                      <div className="flex flex-wrap gap-2">
+                        {packages[selectedTour].activities.map((activity, i) => (
+                          <span
+                            key={i}
+                            className="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-medium"
+                          >
+                            {activity}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-4 pt-4 border-t">
+                      <div>
+                        <span className="text-sm text-muted-foreground">Duration</span>
+                        <p className="font-semibold">{packages[selectedTour].duration}</p>
+                      </div>
+                      <div>
+                        <span className="text-sm text-muted-foreground">Price</span>
+                        <p className="font-semibold text-primary text-xl">{packages[selectedTour].price}</p>
+                      </div>
+                    </div>
+
+                    <div className="pt-4">
+                      <h3 className="font-semibold text-lg mb-2">Additional Details</h3>
+                      <p className="text-muted-foreground">
+                        Detailed tour information and itinerary will be displayed here.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </>
+            )}
+          </DialogContent>
+        </Dialog>
       </div>
     </section>
   );
