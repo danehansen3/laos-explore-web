@@ -11,6 +11,7 @@ import ziplineImg from "@/assets/zipline.jpg";
 import tubingImg from "@/assets/tubing.jpg";
 import supImg from "@/assets/sup.jpg";
 import dirtbikeImg from "@/assets/dirtbike.jpg";
+import paraglidingImg from "@/assets/paragliding.jpg";
 
 const activities = [
   {
@@ -76,6 +77,30 @@ const activities = [
     description: "Tackle rugged mountain trails on high-performance bikes",
     duration: "1-day: 6-7 hours / 2-day available",
     price: "1-day: $250/person (2 ppl) or $150/person (3 ppl)",
+  },
+  {
+    id: "trekking",
+    name: "Trekking Adventure",
+    images: [paraglidingImg, paraglidingImg],
+    description: "6 hr mountain hike (1,400 m altitude) + waterfall + hunting. Overnight in mountain hut with tent, breakfast & coffee, local dinner. 3 hr descent + 8 km kayak to Vang Vieng",
+    duration: "2 days / 1 night",
+    price: "$380 per person (max 2)",
+  },
+  {
+    id: "caves",
+    name: "Cave Exploration",
+    images: [climbingImg, climbingImg],
+    description: "Explore stunning limestone caves including the famous Tham None cave with underground rivers and formations",
+    duration: "Half-day or full-day options",
+    price: "Contact for pricing",
+  },
+  {
+    id: "bluelagoon",
+    name: "Blue Lagoon Visit",
+    images: [kayakingImg, kayakingImg],
+    description: "Swim in the crystal-clear turquoise waters of Vang Vieng's beautiful blue lagoons surrounded by limestone cliffs",
+    duration: "Half-day trip",
+    price: "Contact for pricing",
   },
 ];
 
