@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, MessageCircle } from "lucide-react";
-import heroBg from "@/assets/hero-bg.jpg";
+import hero from "@/assets/hero.jpg";
 
 export const Hero = () => {
   const handleWhatsApp = () => {
@@ -17,22 +17,22 @@ export const Hero = () => {
       <div className="absolute inset-0 z-0">
         <div className="relative w-full h-full">
           {/* YouTube embed or image */}
-          <iframe
+          {/* <iframe
             className="absolute inset-0 w-full h-full object-cover"
             src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1&loop=1&controls=0&showinfo=0&playlist=dQw4w9WgXcQ"
             title="Vang Vieng Adventures"
             allow="autoplay; encrypted-media"
             allowFullScreen
-          />
+          /> */}
           {/* Fallback image */}
           <img
-            src={heroBg}
+            src={hero}
             alt="Vang Vieng landscape"
             className="absolute inset-0 w-full h-full object-cover"
           />
         </div>
         {/* Gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-hero" />
+        <div className="absolute inset-0 bg-black/50" />
       </div>
 
       {/* Content */}

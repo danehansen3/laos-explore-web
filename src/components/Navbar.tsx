@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { MessageCircle, Menu, X } from "lucide-react";
+import logo from "@/assets/logo.jpg";
 
 const navLinks = [
   { name: "Home", href: "#home" },
@@ -12,16 +13,7 @@ const navLinks = [
 ];
 
 export const Navbar = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
@@ -32,16 +24,24 @@ export const Navbar = () => {
   };
 
   const handleWhatsApp = () => {
-    window.open("https://wa.me/8562093439140?text=Hi! I'm interested in booking a tour", "_blank");
+    window.open(
+      "https://wa.me/8562093439140?text=Hi! I'm interested in booking a tour",
+      "_blank"
+    );
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md shadow-sm">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
-          <div className="font-heading font-bold text-2xl bg-gradient-accent bg-clip-text text-transparent">
-            Smiler Tours
-          </div>
+          {/* Logo */}
+          <button onClick={() => scrollToSection("#home")} className="flex items-center">
+            <img
+              src={logo}
+              alt="Smiler Tours"
+              className="h-12 w-auto object-contain"
+            />
+          </button>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
@@ -65,13 +65,17 @@ export const Navbar = () => {
             className="md:hidden"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
-            {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            {isMobileMenuOpen ? (
+              <X className="h-6 w-6" />
+            ) : (
+              <Menu className="h-6 w-6" />
+            )}
           </button>
         </div>
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden pb-6 space-y-4">
+          <div className="md:hidden pb-6 space-y-4 bg-white/80 backdrop-blur-md rounded-xl p-4 shadow-md">
             {navLinks.map((link) => (
               <button
                 key={link.name}

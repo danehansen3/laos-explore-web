@@ -1,6 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Heart, Target, Users, MessageCircle, Award } from "lucide-react";
+import about from "@/assets/about.jpg";
 
 const reasons = [
   {
@@ -20,8 +21,8 @@ const reasons = [
   },
   {
     icon: Target,
-    title: "Eco-Conscious",
-    description: "We practice responsible tourism to preserve Vang Vieng's natural beauty",
+    title: "Memorable Moments",
+    description: "Every tour is designed to create unforgettable experiences, from breathtaking landscapes to thrilling adventures, leaving you with stories and memories to cherish forever.",
   },
 ];
 
@@ -41,12 +42,16 @@ export const About = () => {
             
             {/* Placeholder Photo */}
             <div className="mb-8 max-w-2xl mx-auto">
-              <div className="aspect-video bg-muted rounded-lg flex items-center justify-center">
-                <p className="text-muted-foreground">Photo Placeholder</p>
+              <div className="aspect-video rounded-lg overflow-hidden">
+                <img
+                  src={about}
+                  alt="Vang Vieng tour"
+                  className="w-full h-full object-cover"
+                />
               </div>
             </div>
             
-            <div className="space-y-4 text-lg text-muted-foreground leading-relaxed">
+            <div className="space-y-4 text-lg text-muted-foreground leading-relaxed border-2 border-red-500 p-6 rounded-lg">
               <p>
                 Founded in 2016, Smiler Tours has been the premier adventure tour operator in 
                 Laos, dedicated to showcasing the breathtaking beauty and thrilling activities that make 

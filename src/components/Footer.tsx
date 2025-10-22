@@ -2,7 +2,10 @@ import { MessageCircle, Instagram } from "lucide-react";
 
 export const Footer = () => {
   const handleWhatsApp = () => {
-    window.open("https://wa.me/8562093439140?text=Hi! I'm interested in your tours", "_blank");
+    window.open(
+      "https://wa.me/8562093439140?text=Hi! I'm interested in your tours",
+      "_blank"
+    );
   };
 
   const currentYear = new Date().getFullYear();
@@ -13,9 +16,11 @@ export const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           {/* Company Info */}
           <div className="col-span-1 md:col-span-2">
-            <h3 className="font-heading font-bold text-2xl mb-4 bg-gradient-accent bg-clip-text text-transparent">
-              Smiler Tours
-            </h3>
+            <div className="mb-4 flex justify-left">
+              <h3 className="font-heading font-bold text-2xl text-foreground text-white">
+                Smiler Tours
+              </h3>
+            </div>
             <p className="text-secondary-foreground/80 mb-4">
               Your premier adventure tour operator in Laos, offering unforgettable experiences 
               with the highest safety standards since 2016.
@@ -37,13 +42,20 @@ export const Footer = () => {
           <div>
             <h4 className="font-heading font-semibold text-lg mb-4">Contact Us</h4>
             <div className="space-y-3">
+              {/* WhatsApp button (clickable) */}
               <button
                 onClick={handleWhatsApp}
                 className="flex items-center gap-2 text-secondary-foreground/80 hover:text-secondary-foreground transition-colors"
               >
                 <MessageCircle className="h-4 w-4" />
-                <span>+856 20 9343 9140</span>
+                <span>+85620 9343 9140</span>
               </button>
+
+              {/* Static phone number (non-clickable) */}
+              <div className="flex items-center gap-2 text-secondary-foreground/80">
+                <MessageCircle className="h-4 w-4" />
+                <span>+856 20 5152 5544</span>
+              </div>
             </div>
           </div>
 
@@ -52,11 +64,7 @@ export const Footer = () => {
             <h4 className="font-heading font-semibold text-lg mb-4">Operating Hours</h4>
             <div className="text-secondary-foreground/80 space-y-2">
               <p>Monday - Sunday</p>
-              <p className="font-semibold">7:00 AM - 7:00 PM</p>
-              <p className="mt-4">
-                Smiler tour & train ticket&bike for rental<br />
-                WCCW+3CX Namsong Road Vang Vieng
-              </p>
+              <p className="font-semibold">9:00 AM - 10:00 PM</p>
             </div>
           </div>
         </div>

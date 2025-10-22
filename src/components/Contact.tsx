@@ -15,7 +15,7 @@ export const Contact = () => {
   };
 
   const handleEmail = () => {
-    window.location.href = "mailto:contact@smilertours.com";
+    window.location.href = "mailto:SmileTourinfo@gmail.com";
   };
 
   return (
