@@ -33,6 +33,7 @@ import sup3 from "@/assets/sup3.jpg";
 import sup4 from "@/assets/sup4.jpg";
 import sup5 from "@/assets/sup5.jpg";
 import sup6 from "@/assets/sup6.jpg";
+import sup7 from "@/assets/sup7.jpg";
 
 import db1 from "@/assets/db1.jpg";
 import db2 from "@/assets/db2.jpg";
@@ -41,6 +42,9 @@ import db4 from "@/assets/db4.jpg";
 import db5 from "@/assets/db5.jpg";
 import db6 from "@/assets/db6.jpg";
 import db7 from "@/assets/db7.jpg";
+import db8 from "@/assets/db8.jpg";
+import dbvid1 from "@/assets/dbvid1.mp4";
+import dbvid2 from "@/assets/dbvid2.mp4";
 
 import trek1 from "@/assets/trek1.jpg";
 import trek2 from "@/assets/trek2.jpg";
@@ -133,7 +137,7 @@ const activities = [
   {
     id: "sup",
     name: "Stand Up Paddle Boarding",
-    images: [sup2, sup3, sup4, sup5, sup6],
+    images: [sup2, sup3, sup4, sup5, sup6, sup7],
     description: "Paddle across calm waters with stunning karst views",
     duration: "6 hours (7 km route), 8 AM-2 PM",
     price: "$40 per person (max 3)",
@@ -142,6 +146,7 @@ const activities = [
     id: "dirtbike",
     name: "Dirt Biking",
     images: [db6, db1, db2, db3, db4, db5, db7],
+    videos: [dbvid1, dbvid2],
     description: "Tackle rugged mountain trails on high-performance bikes",
     duration: "1-day: 6-7 hours / 2-day available",
     price: "1-day: $250/person (2 ppl) or $150/person (3 ppl)",
