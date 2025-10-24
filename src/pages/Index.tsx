@@ -7,6 +7,8 @@ import { Safety } from "@/components/Safety";
 import { About } from "@/components/About";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
+import { Location } from "@/components/Location";
+import { Jerseys } from "@/components/Jerseys";
 
 
 const Index = () => {
@@ -20,6 +22,8 @@ const Index = () => {
       <Safety />
       <About />
       <Contact />
+      <Location />
+      <Jerseys />
       <Footer />
     </div>
   );

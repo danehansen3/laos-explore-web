@@ -1,4 +1,4 @@
-import { MessageCircle, Instagram } from "lucide-react";
+import { MessageCircle, Instagram, Facebook } from "lucide-react";
 
 export const Footer = () => {
   const handleWhatsApp = () => {
@@ -34,6 +34,15 @@ export const Footer = () => {
                 aria-label="Instagram"
               >
                 <Instagram className="h-5 w-5" />
+              </a>
+              <a
+                href="https://www.facebook.com/profile.php?id=61558999843811"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 bg-secondary-foreground/10 rounded-full flex items-center justify-center hover:bg-secondary-foreground/20 transition-colors"
+                aria-label="Facebook"
+              >
+                <Facebook className="h-5 w-5" />
               </a>
             </div>
           </div>

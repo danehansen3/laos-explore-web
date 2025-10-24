@@ -9,6 +9,8 @@ export const BookingModal = ({ isOpen, onClose, activityName }) => {
     name: "",
     hotel: "",
     dateTime: "",
+    numberOfPeople: "",
+    ages: "",
   });
 
   const handleInputChange = (e) => {
@@ -20,26 +22,26 @@ export const BookingModal = ({ isOpen, onClose, activityName }) => {
   };
 
   const handleBooking = () => {
-    const { name, hotel, dateTime } = formData;
+    const { name, hotel, dateTime, numberOfPeople, ages } = formData;
 
-    if (!name || !hotel || !dateTime) {
+    if (!name || !hotel || !dateTime || !numberOfPeople || !ages) {
       alert("Please fill in all fields");
       return;
     }
 
-    const message = `Hi! I'd like to book ${activityName}.\n\nName: ${name}\nHotel: ${hotel}\nPreferred Date & Time: ${dateTime}`;
+    const message = `Hi! I'd like to book ${activityName}.\n\nName: ${name}\nHotel: ${hotel}\nPreferred Date & Time: ${dateTime}\nNumber of People: ${numberOfPeople}\nAges: ${ages}`;
 
     window.open(
       `https://wa.me/8562093439140?text=${encodeURIComponent(message)}`,
       "_blank"
     );
 
-    setFormData({ name: "", hotel: "", dateTime: "" });
+    setFormData({ name: "", hotel: "", dateTime: "", numberOfPeople: "", ages: "" });
     onClose();
   };
 
   const handleClose = () => {
-    setFormData({ name: "", hotel: "", dateTime: "" });
+    setFormData({ name: "", hotel: "", dateTime: "", numberOfPeople: "", ages: "" });
     onClose();
   };
 
@@ -89,6 +91,34 @@ export const BookingModal = ({ isOpen, onClose, activityName }) => {
               name="dateTime"
               placeholder="e.g., Tomorrow at 9:00 AM or March 15, 2025 at 2:00 PM"
               value={formData.dateTime}
+              onChange={handleInputChange}
+            />
+          </div>
+
+          <div className="space-y-2">
+            <label htmlFor="numberOfPeople" className="text-sm font-medium">
+              Number of People
+            </label>
+            <Input
+              id="numberOfPeople"
+              name="numberOfPeople"
+              type="number"
+              placeholder="e.g., 2"
+              value={formData.numberOfPeople}
+              onChange={handleInputChange}
+              min="1"
+            />
+          </div>
+
+          <div className="space-y-2">
+            <label htmlFor="ages" className="text-sm font-medium">
+              Ages
+            </label>
+            <Input
+              id="ages"
+              name="ages"
+              placeholder="e.g., 25, 28, 5 (separate with commas)"
+              value={formData.ages}
               onChange={handleInputChange}
             />
           </div>

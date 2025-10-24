@@ -1,6 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { MessageCircle, Instagram, Mail } from "lucide-react";
+import { MessageCircle, Instagram, Mail, Facebook } from "lucide-react";
 
 export const Contact = () => {
   const handleWhatsApp = () => {
@@ -18,6 +18,20 @@ export const Contact = () => {
     window.location.href = "mailto:SmileTourinfo@gmail.com";
   };
 
+  const handleFacebook1 = () => {
+    window.open(
+      "https://www.facebook.com/profile.php?id=61561651779454",
+      "_blank"
+    );
+  };
+
+  const handleFacebook2 = () => {
+    window.open(
+      "https://www.facebook.com/profile.php?id=61558999843811",
+      "_blank"
+    );
+  };
+
   return (
     <section id="contact" className="py-20 bg-muted">
       <div className="container mx-auto px-4">
@@ -30,7 +44,7 @@ export const Contact = () => {
           </p>
         </div>
 
-        <div className="max-w-md mx-auto space-y-6">
+        <div className="max-w-2xl mx-auto space-y-6">
           {/* WhatsApp - Main Contact */}
           <Card className="text-center">
             <CardContent className="pt-8 pb-8">
@@ -50,8 +64,9 @@ export const Contact = () => {
             </CardContent>
           </Card>
 
-          {/* Instagram & Email */}
+          {/* Social Media Grid */}
           <div className="grid grid-cols-2 gap-4">
+            {/* Instagram */}
             <Card className="text-center">
               <CardContent className="pt-6 pb-6">
                 <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
@@ -60,13 +75,14 @@ export const Contact = () => {
                 <h4 className="font-heading font-semibold text-lg mb-3">
                   Instagram
                 </h4>
-                <Button variant="outline" onClick={handleInstagram} className="gap-2">
+                <Button variant="outline" onClick={handleInstagram} className="gap-2 w-full">
                   <Instagram className="h-4 w-4" />
                   Follow Us
                 </Button>
               </CardContent>
             </Card>
 
+            {/* Email */}
             <Card className="text-center">
               <CardContent className="pt-6 pb-6">
                 <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
@@ -75,9 +91,41 @@ export const Contact = () => {
                 <h4 className="font-heading font-semibold text-lg mb-3">
                   Email
                 </h4>
-                <Button variant="outline" onClick={handleEmail} className="gap-2">
+                <Button variant="outline" onClick={handleEmail} className="gap-2 w-full">
                   <Mail className="h-4 w-4" />
                   Email Us
+                </Button>
+              </CardContent>
+            </Card>
+
+            {/* Facebook 1 */}
+            <Card className="text-center">
+              <CardContent className="pt-6 pb-6">
+                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <Facebook className="h-6 w-6 text-primary" />
+                </div>
+                <h4 className="font-heading font-semibold text-lg mb-3">
+                  Facebook
+                </h4>
+                <Button variant="outline" onClick={handleFacebook1} className="gap-2 w-full">
+                  <Facebook className="h-4 w-4" />
+                  Ghost Riders
+                </Button>
+              </CardContent>
+            </Card>
+
+            {/* Facebook 2 */}
+            <Card className="text-center">
+              <CardContent className="pt-6 pb-6">
+                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <Facebook className="h-6 w-6 text-primary" />
+                </div>
+                <h4 className="font-heading font-semibold text-lg mb-3">
+                  Facebook
+                </h4>
+                <Button variant="outline" onClick={handleFacebook2} className="gap-2 w-full">
+                  <Facebook className="h-4 w-4" />
+                  Smiler Tours
                 </Button>
               </CardContent>
             </Card>
