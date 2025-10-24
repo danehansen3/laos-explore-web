@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { MessageCircle, Sparkles, Info } from "lucide-react";
 import { useState } from "react";
+import { BookingModal } from "@/components/BookingModal";
 
 // Import tour images
 import kayak1 from "@/assets/kayak1.jpg";
@@ -61,19 +62,17 @@ const packages = [
 
 export const TourPackages = () => {
   const [selectedTour, setSelectedTour] = useState<number | null>(null);
+  const [bookingModalOpen, setBookingModalOpen] = useState(false);
+  const [selectedPackageName, setSelectedPackageName] = useState("");
 
-  const handleBooking = (packageName: string) => {
-    window.open(
-      `https://wa.me/8562093439140?text=Hi! I'd like to book the ${packageName} package`,
-      "_blank"
-    );
+  const handleBookingClick = (packageName: string) => {
+    setSelectedPackageName(packageName);
+    setBookingModalOpen(true);
   };
 
   const handleCustomTour = () => {
-    window.open(
-      "https://wa.me/8562093439140?text=Hi! I'd like to create a custom tour package",
-      "_blank"
-    );
+    setSelectedPackageName("Custom Tour Package");
+    setBookingModalOpen(true);
   };
 
   return (
@@ -125,7 +124,7 @@ export const TourPackages = () => {
                 <div className="space-y-2">
                   <Button
                     className="w-full gap-2"
-                    onClick={() => handleBooking(pkg.name)}
+                    onClick={() => handleBookingClick(pkg.name)}
                   >
                     <MessageCircle className="h-4 w-4" />
                     Book Package
@@ -234,7 +233,7 @@ export const TourPackages = () => {
                     <Button
                       className="w-full gap-2 mt-4"
                       onClick={() => {
-                        handleBooking(packages[selectedTour].name);
+                        handleBookingClick(packages[selectedTour].name);
                         setSelectedTour(null);
                       }}
                     >
@@ -247,6 +246,13 @@ export const TourPackages = () => {
             )}
           </DialogContent>
         </Dialog>
+
+        {/* Booking Modal */}
+        <BookingModal
+          isOpen={bookingModalOpen}
+          onClose={() => setBookingModalOpen(false)}
+          activityName={selectedPackageName}
+        />
       </div>
     </section>
   );

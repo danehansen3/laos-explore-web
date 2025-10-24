@@ -2,6 +2,7 @@ import { Card, CardContent, CardDescription, CardHeader } from "@/components/ui/
 import { Button } from "@/components/ui/button";
 import { MessageCircle, ChevronLeft, ChevronRight } from "lucide-react";
 import { useState } from "react";
+import { BookingModal } from "@/components/BookingModal";
 
 import allActivities from "@/assets/allactivities.jpg";
 
@@ -33,7 +34,6 @@ import sup3 from "@/assets/sup3.jpg";
 import sup4 from "@/assets/sup4.jpg";
 import sup5 from "@/assets/sup5.jpg";
 import sup6 from "@/assets/sup6.jpg";
-import sup7 from "@/assets/sup7.jpg";
 
 import db1 from "@/assets/db1.jpg";
 import db2 from "@/assets/db2.jpg";
@@ -42,9 +42,6 @@ import db4 from "@/assets/db4.jpg";
 import db5 from "@/assets/db5.jpg";
 import db6 from "@/assets/db6.jpg";
 import db7 from "@/assets/db7.jpg";
-import db8 from "@/assets/db8.jpg";
-import dbvid1 from "@/assets/dbvid1.mp4";
-import dbvid2 from "@/assets/dbvid2.mp4";
 
 import trek1 from "@/assets/trek1.jpg";
 import trek2 from "@/assets/trek2.jpg";
@@ -137,7 +134,7 @@ const activities = [
   {
     id: "sup",
     name: "Stand Up Paddle Boarding",
-    images: [sup2, sup3, sup4, sup5, sup6, sup7],
+    images: [sup2, sup3, sup4, sup5, sup6],
     description: "Paddle across calm waters with stunning karst views",
     duration: "6 hours (7 km route), 8 AM-2 PM",
     price: "$40 per person (max 3)",
@@ -146,7 +143,6 @@ const activities = [
     id: "dirtbike",
     name: "Dirt Biking",
     images: [db6, db1, db2, db3, db4, db5, db7],
-    videos: [dbvid1, dbvid2],
     description: "Tackle rugged mountain trails on high-performance bikes",
     duration: "1-day: 6-7 hours / 2-day available",
     price: "1-day: $250/person (2 ppl) or $150/person (3 ppl)",
@@ -172,7 +168,7 @@ const activities = [
     name: "Kayaking",
     images: [kayak1, kayak2, kayak3, kayak4],
     videos: [kayakvid],
-    description: "Paddle along the Nam Song River surrounded by towering limestone cliffs and lush jungle scenery — a relaxing yet adventurous way to explore Vang Vieng’s natural beauty.",
+    description: "Paddle along the Nam Song River surrounded by towering limestone cliffs and lush jungle scenery — a relaxing yet adventurous way to explore Vang Vieng's natural beauty.",
     duration: "About 1 hour",
     price: "Contact for pricing",
   },
@@ -196,7 +192,7 @@ const activities = [
     id: "viewpoints",
     name: "Viewpoint Hikes",
     images: [view1, view2, view3, view4, view5],
-    description: "Explore Vang Vieng’s stunning viewpoints, including Nam Xay (350m, accessible by motorbike), Horkham (250m, featuring a model airplane), and Pha Ngern or Silver Cliff (800m) for breathtaking views of the Nam Song River, limestone cliffs, and surrounding valleys. Each viewpoint offers a unique perspective, perfect for adventure seekers and photographers alike.",
+    description: "Explore Vang Vieng's stunning viewpoints, including Nam Xay (350m, accessible by motorbike), Horkham (250m, featuring a model airplane), and Pha Ngern or Silver Cliff (800m) for breathtaking views of the Nam Song River, limestone cliffs, and surrounding valleys. Each viewpoint offers a unique perspective, perfect for adventure seekers and photographers alike.",
     duration: "Half-day trip",
     price: "Contact for pricing",
   },
@@ -209,6 +205,7 @@ const ActivityCard = ({ activity }: { activity: typeof activities[0] }) => {
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
 
   const nextMedia = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -220,94 +217,99 @@ const ActivityCard = ({ activity }: { activity: typeof activities[0] }) => {
     setCurrentIndex((prev) => (prev - 1 + media.length) % media.length);
   };
 
-  const handleBooking = (e: React.MouseEvent) => {
+  const handleBookingClick = (e: React.MouseEvent) => {
     e.stopPropagation();
-    window.open(
-      `https://wa.me/8562093439140?text=Hi! I'd like to book ${activity.name}`,
-      "_blank"
-    );
+    setIsBookingModalOpen(true);
   };
 
   const current = media[currentIndex];
 
   return (
-    <Card className="overflow-hidden hover:shadow-glow transition-all duration-300">
-      <div className="relative h-64 overflow-hidden group">
-        {current.type === "image" ? (
-          <img
-            src={current.src}
-            alt={`${activity.name} ${currentIndex + 1}`}
-            className="w-full h-full object-cover [object-position:center_75%]"
-          />
-        ) : (
-          <video
-            src={current.src}
-            controls
-            autoPlay
-            muted
-            loop
-            className="w-full h-full object-cover"
-          />
-        )}
+    <>
+      <Card className="overflow-hidden hover:shadow-glow transition-all duration-300">
+        <div className="relative h-64 overflow-hidden group">
+          {current.type === "image" ? (
+            <img
+              src={current.src}
+              alt={`${activity.name} ${currentIndex + 1}`}
+              className="w-full h-full object-cover [object-position:center_75%]"
+            />
+          ) : (
+            <video
+              src={current.src}
+              controls
+              autoPlay
+              muted
+              loop
+              className="w-full h-full object-cover"
+            />
+          )}
 
-        <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 to-transparent" />
-        <h3 className="absolute bottom-4 left-4 font-heading font-bold text-2xl text-primary-foreground">
-          {activity.name}
-        </h3>
+          <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 to-transparent" />
+          <h3 className="absolute bottom-4 left-4 font-heading font-bold text-2xl text-primary-foreground">
+            {activity.name}
+          </h3>
 
-        {media.length > 1 && (
-          <>
-            <button
-              onClick={prevMedia}
-              className="absolute left-2 top-1/2 -translate-y-1/2 bg-background/80 hover:bg-background p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
-              aria-label="Previous media"
-            >
-              <ChevronLeft className="h-4 w-4" />
-            </button>
-            <button
-              onClick={nextMedia}
-              className="absolute right-2 top-1/2 -translate-y-1/2 bg-background/80 hover:bg-background p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
-              aria-label="Next media"
-            >
-              <ChevronRight className="h-4 w-4" />
-            </button>
+          {media.length > 1 && (
+            <>
+              <button
+                onClick={prevMedia}
+                className="absolute left-2 top-1/2 -translate-y-1/2 bg-background/80 hover:bg-background p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+                aria-label="Previous media"
+              >
+                <ChevronLeft className="h-4 w-4" />
+              </button>
+              <button
+                onClick={nextMedia}
+                className="absolute right-2 top-1/2 -translate-y-1/2 bg-background/80 hover:bg-background p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+                aria-label="Next media"
+              >
+                <ChevronRight className="h-4 w-4" />
+              </button>
 
-            <div className="absolute bottom-2 right-2 flex gap-1">
-              {media.map((_, index) => (
-                <div
-                  key={index}
-                  className={`h-1.5 w-1.5 rounded-full transition-colors ${
-                    index === currentIndex
-                      ? "bg-primary-foreground"
-                      : "bg-primary-foreground/50"
-                  }`}
-                />
-              ))}
-            </div>
-          </>
-        )}
-      </div>
-
-      <CardHeader>
-        <CardDescription>{activity.description}</CardDescription>
-      </CardHeader>
-      <CardContent className="space-y-3">
-        <div className="space-y-2 text-sm">
-          <div className="flex justify-between">
-            <span className="text-muted-foreground">Duration:</span>
-            <span className="font-medium text-right">{activity.duration}</span>
-          </div>
-          <div className="flex justify-between">
-            <span className="text-muted-foreground">Price:</span>
-            <span className="font-medium text-right">{activity.price}</span>
-          </div>
+              <div className="absolute bottom-2 right-2 flex gap-1">
+                {media.map((_, index) => (
+                  <div
+                    key={index}
+                    className={`h-1.5 w-1.5 rounded-full transition-colors ${
+                      index === currentIndex
+                        ? "bg-primary-foreground"
+                        : "bg-primary-foreground/50"
+                    }`}
+                  />
+                ))}
+              </div>
+            </>
+          )}
         </div>
-        <Button className="w-full gap-2 mt-4" onClick={handleBooking}>
-          <MessageCircle className="h-4 w-4" />
-          Contact for Booking
-        </Button>
-      </CardContent>
-    </Card>
+
+        <CardHeader>
+          <CardDescription>{activity.description}</CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-3">
+          <div className="space-y-2 text-sm">
+            <div className="flex justify-between">
+              <span className="text-muted-foreground">Duration:</span>
+              <span className="font-medium text-right">{activity.duration}</span>
+            </div>
+            <div className="flex justify-between">
+              <span className="text-muted-foreground">Price:</span>
+              <span className="font-medium text-right">{activity.price}</span>
+            </div>
+          </div>
+          <Button className="w-full gap-2 mt-4" onClick={handleBookingClick}>
+            <MessageCircle className="h-4 w-4" />
+            Contact for Booking
+          </Button>
+        </CardContent>
+      </Card>
+
+      <BookingModal
+        isOpen={isBookingModalOpen}
+        onClose={() => setIsBookingModalOpen(false)}
+        activityName={activity.name}
+      />
+    </>
   );
 };
 
@@ -352,12 +354,13 @@ export const Activities = () => {
 
           <Button
             className="gap-2 text-lg px-8 py-6"
-            onClick={() =>
+            onClick={() => {
+              const message = "Hi! I'd like to book an activity package";
               window.open(
-                "https://wa.me/8562093439140?text=Hi! I'd like to book an activity package",
+                `https://wa.me/8562093439140?text=${encodeURIComponent(message)}`,
                 "_blank"
-              )
-            }
+              );
+            }}
           >
             <MessageCircle className="h-5 w-5" />
             Book Your Adventure
