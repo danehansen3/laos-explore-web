@@ -271,20 +271,26 @@ const ActivityCard = ({ activity }: { activity: typeof activities[0] }) => {
               className="w-full h-full object-cover [object-position:center_75%]"
             />
           ) : current?.type === "video" && videoData ? (
-            <iframe
-              src={`${videoData.src}?autoplay=1&loop=1&muted=1&preload=auto`}
-              style={{
-                width: "100%",
-                height: "100%",
-                border: "none",
-                objectFit: "cover",
-                transform: shouldZoom ? "scale(1.1)" : "scale(1)",
-                transition: "transform 3s ease-in-out",
-              }}
-              allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
-              allowFullScreen
-            ></iframe>
-          ) : null}
+                <iframe
+                  src={`${videoData.src}?autoplay=true&muted=true&loop=true&preload=auto`}
+                  title={`${activity.name} video`}
+                  frameBorder="0"
+                  allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture"
+                  allowFullScreen
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    border: "none",
+                    objectFit: "cover",
+                    transform:
+                      current.key === "balloon" || current.key === "paramotor"
+                        ? "scale(1.1)" // zoom slightly for balloon + paramotor
+                        : "scale(1)",
+                    transition: "transform 3s ease-in-out",
+                    pointerEvents: "none", // prevent blocking taps
+                  }}
+                />
+              ) : null}
 
           <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 to-transparent" />
           <h3 className="absolute bottom-4 left-4 font-heading font-bold text-2xl text-primary-foreground">
