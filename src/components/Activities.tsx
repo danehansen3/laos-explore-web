@@ -1,7 +1,7 @@
 import { Card, CardContent, CardDescription, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { MessageCircle, ChevronLeft, ChevronRight } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { BookingModal } from "@/components/BookingModal";
 
 import allActivities from "@/assets/allactivities.jpg";
@@ -217,17 +217,14 @@ const activities = [
   },
 ];
 
-// --- Added explicit MediaItem type ---
+// --- MediaItem type ---
 type MediaItem =
   | { type: "video"; key: string }
   | { type: "image"; src: string };
 
 const ActivityCard = ({ activity }: { activity: typeof activities[0] }) => {
   const videos: MediaItem[] =
-    activity.videos?.map((videoKey) => ({
-      type: "video",
-      key: videoKey,
-    })) || [];
+    activity.videos?.map((videoKey) => ({ type: "video", key: videoKey })) || [];
 
   const images: MediaItem[] =
     (activity.images || []).map((src) => ({ type: "image", src }));
@@ -236,6 +233,29 @@ const ActivityCard = ({ activity }: { activity: typeof activities[0] }) => {
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
+
+  // --- MOBILE SAFARI FIRST-TOUCH AUTOPLAY FIX ---
+  useEffect(() => {
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    if (!isMobile) return;
+
+    const handleFirstTouch = () => {
+      const iframes = document.querySelectorAll("iframe");
+      iframes.forEach((iframe) => {
+        const src = iframe.getAttribute("src");
+        if (src?.includes("mux.com")) {
+          iframe.setAttribute("src", src); // reload triggers autoplay
+        }
+      });
+      window.removeEventListener("touchstart", handleFirstTouch);
+    };
+
+    window.addEventListener("touchstart", handleFirstTouch, { once: true });
+
+    return () => {
+      window.removeEventListener("touchstart", handleFirstTouch);
+    };
+  }, []);
 
   const nextMedia = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -256,10 +276,6 @@ const ActivityCard = ({ activity }: { activity: typeof activities[0] }) => {
   const videoData =
     current?.type === "video" ? muxVideos[current.key as keyof typeof muxVideos] : null;
 
-  const shouldZoom =
-    current?.type === "video" &&
-    (current.key === "balloon" || current.key === "paramotor");
-
   return (
     <>
       <Card className="overflow-hidden hover:shadow-glow transition-all duration-300">
@@ -271,26 +287,27 @@ const ActivityCard = ({ activity }: { activity: typeof activities[0] }) => {
               className="w-full h-full object-cover [object-position:center_75%]"
             />
           ) : current?.type === "video" && videoData ? (
-                <iframe
-                  src={`${videoData.src}?autoplay=true&muted=true&loop=true&preload=auto`}
-                  title={`${activity.name} video`}
-                  frameBorder="0"
-                  allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture"
-                  allowFullScreen
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                    border: "none",
-                    objectFit: "cover",
-                    transform:
-                      current.key === "balloon" || current.key === "paramotor"
-                        ? "scale(1.1)" // zoom slightly for balloon + paramotor
-                        : "scale(1)",
-                    transition: "transform 3s ease-in-out",
-                    pointerEvents: "none", // prevent blocking taps
-                  }}
-                />
-              ) : null}
+            <iframe
+              className="mux-video"
+              src={`${videoData.src}?autoplay=true&muted=true&loop=true&preload=auto&playsinline=1`}
+              title={`${activity.name} video`}
+              frameBorder="0"
+              allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture"
+              allowFullScreen
+              style={{
+                width: "100%",
+                height: "100%",
+                border: "none",
+                objectFit: "cover",
+                transform:
+                  current.key === "balloon" || current.key === "paramotor"
+                    ? "scale(1.1)"
+                    : "scale(1)",
+                transition: "transform 3s ease-in-out",
+                pointerEvents: "none",
+              }}
+            />
+          ) : null}
 
           <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 to-transparent" />
           <h3 className="absolute bottom-4 left-4 font-heading font-bold text-2xl text-primary-foreground">
@@ -383,7 +400,7 @@ export const Activities = () => {
         </div>
       </section>
 
-      {/* --- New All Activities Section --- */}
+      {/* --- All Activities Section --- */}
       <section id="all-activities" className="py-20 bg-background text-center">
         <div className="container mx-auto px-4">
           <h2 className="font-heading font-bold text-4xl md:text-5xl mb-6 text-foreground">
