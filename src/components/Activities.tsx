@@ -234,28 +234,7 @@ const ActivityCard = ({ activity }: { activity: typeof activities[0] }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
 
-  // --- MOBILE SAFARI FIRST-TOUCH AUTOPLAY FIX ---
-  useEffect(() => {
-    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-    if (!isMobile) return;
-
-    const handleFirstTouch = () => {
-      const iframes = document.querySelectorAll("iframe");
-      iframes.forEach((iframe) => {
-        const src = iframe.getAttribute("src");
-        if (src?.includes("mux.com")) {
-          iframe.setAttribute("src", src); // reload triggers autoplay
-        }
-      });
-      window.removeEventListener("touchstart", handleFirstTouch);
-    };
-
-    window.addEventListener("touchstart", handleFirstTouch, { once: true });
-
-    return () => {
-      window.removeEventListener("touchstart", handleFirstTouch);
-    };
-  }, []);
+  // --- FIX: Removed the unreliable global touchstart useEffect for autoplay ---
 
   const nextMedia = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -304,7 +283,7 @@ const ActivityCard = ({ activity }: { activity: typeof activities[0] }) => {
                     ? "scale(1.1)"
                     : "scale(1)",
                 transition: "transform 3s ease-in-out",
-                pointerEvents: "none",
+                // FIX: REMOVED pointerEvents: "none" to allow user tap/click on mobile to start video
               }}
             />
           ) : null}
