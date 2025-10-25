@@ -13,12 +13,10 @@ import balloon1 from "@/assets/balloon1.jpg";
 import balloon2 from "@/assets/balloon2.jpg";
 import balloon3 from "@/assets/balloon3.jpg";
 import balloon5 from "@/assets/balloon5.jpg";
-import balloonvid from "@/assets/balloonvid.mp4";
 
 import paramotor2 from "@/assets/paramotor2.jpg";
 import paramotor3 from "@/assets/paramotor3.jpg";
 import paramotor4 from "@/assets/paramotor4.jpg";
-import paramotorvid from "@/assets/paraamotorvid.mp4";
 
 import rock1 from "@/assets/rock1.jpg";
 import rock2 from "@/assets/rock2.jpg";
@@ -65,7 +63,6 @@ import kayak1 from "@/assets/kayak1.jpg";
 import kayak2 from "@/assets/kayak2.jpg";
 import kayak3 from "@/assets/kayak3.jpg";
 import kayak4 from "@/assets/kayak4.jpg";
-import kayakvid from "@/assets/kayakvid.mp4";
 
 import zipline1 from "@/assets/zipline1.jpg";
 import zipline2 from "@/assets/zipline2.jpg";
@@ -78,6 +75,22 @@ import lagoon4 from "@/assets/lagoon4.jpg";
 import lagoon5 from "@/assets/lagoon5.jpg";
 import lagoon6 from "@/assets/lagoon6.jpg";
 import lagoon7 from "@/assets/lagoon7.jpg";
+
+// Mux video data
+const muxVideos = {
+  balloon: {
+    src: "https://player.mux.com/2xDUhyGlrxD00gAEAfUQs00xwhFqoLX2cGQn002mkMMZos",
+    aspectRatio: "9/16",
+  },
+  paramotor: {
+    src: "https://player.mux.com/3nJDMoAw27mtjYy7plGQqrXOHfHbwPH9nyqVJYUnpc8",
+    aspectRatio: "9/16",
+  },
+  kayak: {
+    src: "https://player.mux.com/v00QKsbtqBx7i5fmHNegdox3TCCNSXZKZ1DMEy901PBts",
+    aspectRatio: "424/239",
+  },
+};
 
 const activities = [
   {
@@ -93,7 +106,7 @@ const activities = [
     id: "balloon",
     name: "Hot Air Balloon",
     images: [balloon1, balloon2, balloon3, balloon5],
-    videos: [balloonvid],
+    videos: ["balloon"],
     description: "Float peacefully over misty mountains and rice paddies",
     duration: "25-30 min flight (total trip ~2 hours)",
     price: "$120 per person",
@@ -102,7 +115,7 @@ const activities = [
     id: "paramotor",
     name: "Paramotor",
     images: [paramotor2, paramotor3, paramotor4],
-    videos: [paramotorvid],
+    videos: ["paramotor"],
     description: "Soar above Vang Vieng's dramatic landscape with powered flight",
     duration: "15 min flight (total trip ~1 hour)",
     price: "$65 (May-Sep) / $80 (Oct-Apr)",
@@ -151,7 +164,8 @@ const activities = [
     id: "trekking",
     name: "Trekking Adventure",
     images: [trek2, trek1, trek3],
-    description: "6 hr mountain hike (1,400 m altitude) + waterfall + hunting. Overnight in mountain hut with tent, breakfast & coffee, local dinner. 3 hr descent + 8 km kayak to Vang Vieng",
+    description:
+      "6 hr mountain hike (1,400 m altitude) + waterfall + hunting. Overnight in mountain hut with tent, breakfast & coffee, local dinner. 3 hr descent + 8 km kayak to Vang Vieng",
     duration: "2 days / 1 night",
     price: "$380 per person (max 2)",
   },
@@ -159,7 +173,8 @@ const activities = [
     id: "caves",
     name: "Cave Exploration",
     images: [cave1, cave2],
-    description: "Explore stunning limestone caves including the famous Tham None cave with underground rivers and formations",
+    description:
+      "Explore stunning limestone caves including the famous Tham None cave with underground rivers and formations",
     duration: "Half-day trip",
     price: "Contact for pricing",
   },
@@ -167,8 +182,9 @@ const activities = [
     id: "kayak",
     name: "Kayaking",
     images: [kayak1, kayak2, kayak3, kayak4],
-    videos: [kayakvid],
-    description: "Paddle along the Nam Song River surrounded by towering limestone cliffs and lush jungle scenery — a relaxing yet adventurous way to explore Vang Vieng's natural beauty.",
+    videos: ["kayak"],
+    description:
+      "Paddle along the Nam Song River surrounded by towering limestone cliffs and lush jungle scenery — a relaxing yet adventurous way to explore Vang Vieng's natural beauty.",
     duration: "About 1 hour",
     price: "Contact for pricing",
   },
@@ -176,7 +192,8 @@ const activities = [
     id: "bluelagoon",
     name: "Blue Lagoon Visit",
     images: [lagoon1, lagoon2, lagoon3, lagoon4, lagoon5, lagoon6, lagoon7],
-    description: "Swim in the crystal-clear turquoise waters of Vang Vieng's beautiful blue lagoons surrounded by limestone cliffs",
+    description:
+      "Swim in the crystal-clear turquoise waters of Vang Vieng's beautiful blue lagoons surrounded by limestone cliffs",
     duration: "Half-day trip",
     price: "Contact for pricing",
   },
@@ -184,7 +201,8 @@ const activities = [
     id: "waterfall",
     name: "Kaeng Nyui Waterfall",
     images: [waterfall1, waterfall3, waterfall4, waterfall5],
-    description: "Hike through lush jungle trails to reach Kaeng Nyui, a stunning multi-tiered waterfall where you can cool off in natural pools and enjoy the peaceful sounds of nature.",
+    description:
+      "Hike through lush jungle trails to reach Kaeng Nyui, a stunning multi-tiered waterfall where you can cool off in natural pools and enjoy the peaceful sounds of nature.",
     duration: "Half-day trip",
     price: "Contact for pricing",
   },
@@ -192,17 +210,29 @@ const activities = [
     id: "viewpoints",
     name: "Viewpoint Hikes",
     images: [view1, view2, view3, view4, view5],
-    description: "Explore Vang Vieng's stunning viewpoints, including Nam Xay (350m, accessible by motorbike), Horkham (250m, featuring a model airplane), and Pha Ngern or Silver Cliff (800m) for breathtaking views of the Nam Song River, limestone cliffs, and surrounding valleys. Each viewpoint offers a unique perspective, perfect for adventure seekers and photographers alike.",
+    description:
+      "Explore Vang Vieng's stunning viewpoints, including Nam Xay (350m, accessible by motorbike), Horkham (250m, featuring a model airplane), and Pha Ngern or Silver Cliff (800m) for breathtaking views of the Nam Song River, limestone cliffs, and surrounding valleys. Each viewpoint offers a unique perspective, perfect for adventure seekers and photographers alike.",
     duration: "Half-day trip",
     price: "Contact for pricing",
   },
 ];
 
+// --- Added explicit MediaItem type ---
+type MediaItem =
+  | { type: "video"; key: string }
+  | { type: "image"; src: string };
+
 const ActivityCard = ({ activity }: { activity: typeof activities[0] }) => {
-  const media = [
-    ...(activity.videos || []).map((src) => ({ type: "video", src })),
-    ...(activity.images || []).map((src) => ({ type: "image", src })),
-  ];
+  const videos: MediaItem[] =
+    activity.videos?.map((videoKey) => ({
+      type: "video",
+      key: videoKey,
+    })) || [];
+
+  const images: MediaItem[] =
+    (activity.images || []).map((src) => ({ type: "image", src }));
+
+  const media: MediaItem[] = [...videos, ...images];
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
@@ -223,27 +253,38 @@ const ActivityCard = ({ activity }: { activity: typeof activities[0] }) => {
   };
 
   const current = media[currentIndex];
+  const videoData =
+    current?.type === "video" ? muxVideos[current.key as keyof typeof muxVideos] : null;
+
+  const shouldZoom =
+    current?.type === "video" &&
+    (current.key === "balloon" || current.key === "paramotor");
 
   return (
     <>
       <Card className="overflow-hidden hover:shadow-glow transition-all duration-300">
-        <div className="relative h-64 overflow-hidden group">
-          {current.type === "image" ? (
+        <div className="relative h-64 overflow-hidden bg-muted group">
+          {current?.type === "image" ? (
             <img
               src={current.src}
               alt={`${activity.name} ${currentIndex + 1}`}
               className="w-full h-full object-cover [object-position:center_75%]"
             />
-          ) : (
-            <video
-              src={current.src}
-              controls
-              autoPlay
-              muted
-              loop
-              className="w-full h-full object-cover"
-            />
-          )}
+          ) : current?.type === "video" && videoData ? (
+            <iframe
+              src={`${videoData.src}?autoplay=1&loop=1&muted=1&preload=auto`}
+              style={{
+                width: "100%",
+                height: "100%",
+                border: "none",
+                objectFit: "cover",
+                transform: shouldZoom ? "scale(1.1)" : "scale(1)",
+                transition: "transform 3s ease-in-out",
+              }}
+              allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
+              allowFullScreen
+            ></iframe>
+          ) : null}
 
           <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 to-transparent" />
           <h3 className="absolute bottom-4 left-4 font-heading font-bold text-2xl text-primary-foreground">
