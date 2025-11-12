@@ -34,6 +34,9 @@ import sup4 from "@/assets/sup4.jpg";
 import sup5 from "@/assets/sup5.jpg";
 import sup6 from "@/assets/sup6.jpg";
 
+import dbvv from "@/assets/db-vang-vieng-route.png";
+import dblt from "@/assets/db-long-tieng.png";
+import dbmf from "@/assets/db-muang-fuang.png";
 import db1 from "@/assets/db1.jpg";
 import db2 from "@/assets/db2.jpg";
 import db3 from "@/assets/db3.jpg";
@@ -156,7 +159,7 @@ const activities = [
   {
     id: "dirtbike",
     name: "Dirt Biking",
-    images: [db6, db1, db2, db3, db4, db5, db7],
+    images: [dbvv, dblt, dbmf, db6, db1, db2, db3, db4, db5, db7],
     description: "Tackle rugged mountain trails on high-performance bikes",
     duration: "1-day: 6-7 hours / 2-day available",
     price: "1-day: $250/person (2 ppl) or $150/person (3 ppl)",
