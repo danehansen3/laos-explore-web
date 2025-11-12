@@ -1,8 +1,9 @@
 import { Card, CardContent, CardDescription, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { MessageCircle, ChevronLeft, ChevronRight } from "lucide-react";
+import { MessageCircle, ChevronLeft, ChevronRight, X } from "lucide-react";
 import { useState, useEffect } from "react";
 import { BookingModal } from "@/components/BookingModal";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 
 import allActivities from "@/assets/allactivities.jpg";
 
@@ -233,6 +234,7 @@ const ActivityCard = ({ activity }: { activity: typeof activities[0] }) => {
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
+  const [fullscreenImage, setFullscreenImage] = useState<string | null>(null);
 
   // --- FIX: Removed the unreliable global touchstart useEffect for autoplay ---
 
@@ -263,7 +265,11 @@ const ActivityCard = ({ activity }: { activity: typeof activities[0] }) => {
             <img
               src={current.src}
               alt={`${activity.name} ${currentIndex + 1}`}
-              className="w-full h-full object-cover [object-position:center_75%]"
+              className="w-full h-full object-cover [object-position:center_75%] cursor-pointer"
+              onClick={(e) => {
+                e.stopPropagation();
+                setFullscreenImage(current.src);
+              }}
             />
           ) : current?.type === "video" && videoData ? (
             <iframe
@@ -352,6 +358,25 @@ const ActivityCard = ({ activity }: { activity: typeof activities[0] }) => {
         onClose={() => setIsBookingModalOpen(false)}
         activityName={activity.name}
       />
+
+      <Dialog open={!!fullscreenImage} onOpenChange={() => setFullscreenImage(null)}>
+        <DialogContent className="max-w-[95vw] max-h-[95vh] p-0 bg-transparent border-none">
+          <button
+            onClick={() => setFullscreenImage(null)}
+            className="absolute top-4 right-4 z-50 bg-background/80 hover:bg-background p-2 rounded-full"
+            aria-label="Close"
+          >
+            <X className="h-6 w-6" />
+          </button>
+          {fullscreenImage && (
+            <img
+              src={fullscreenImage}
+              alt="Full size view"
+              className="w-full h-full object-contain"
+            />
+          )}
+        </DialogContent>
+      </Dialog>
     </>
   );
 };
