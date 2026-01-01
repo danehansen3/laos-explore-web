@@ -1,9 +1,16 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { MessageCircle, Sparkles, Info } from "lucide-react";
+import { MessageCircle, Sparkles, Info, Map, Download } from "lucide-react";
 import { useState } from "react";
 import { BookingModal } from "@/components/BookingModal";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 // Import tour images
 import kayak1 from "@/assets/kayak1.jpg";
@@ -12,7 +19,41 @@ import rock1 from "@/assets/rock1.jpg";
 import db2 from "@/assets/db2.jpg";
 import tube3 from "@/assets/tube3.jpg";
 
-const packages = [
+// Import dirt bike assets
+import dbImg1 from "@/assets/db-assets/WhatsApp Image 2026-01-01 at 15.42.07.jpeg";
+import dbImg2 from "@/assets/db-assets/WhatsApp Image 2026-01-01 at 15.42.14.jpeg";
+import dbImg3 from "@/assets/db-assets/WhatsApp Image 2026-01-01 at 15.42.16 (1).jpeg";
+import dbImg4 from "@/assets/db-assets/WhatsApp Image 2026-01-01 at 15.42.16.jpeg";
+import dbImg5 from "@/assets/db-assets/WhatsApp Image 2026-01-01 at 15.42.19.jpeg";
+import dbImg6 from "@/assets/db-assets/WhatsApp Image 2026-01-01 at 15.42.20 (1).jpeg";
+import dbImg7 from "@/assets/db-assets/WhatsApp Image 2026-01-01 at 15.42.20 (2).jpeg";
+import dbImg8 from "@/assets/db-assets/WhatsApp Image 2026-01-01 at 15.42.20 (3).jpeg";
+import dbImg9 from "@/assets/db-assets/WhatsApp Image 2026-01-01 at 15.42.20.jpeg";
+import dbImg10 from "@/assets/db-assets/WhatsApp Image 2026-01-01 at 15.42.21 (1).jpeg";
+import dbImg11 from "@/assets/db-assets/WhatsApp Image 2026-01-01 at 15.42.21 (2).jpeg";
+import dbImg12 from "@/assets/db-assets/WhatsApp Image 2026-01-01 at 15.42.21.jpeg";
+import dbImg13 from "@/assets/db-assets/WhatsApp Image 2026-01-01 at 15.42.23.jpeg";
+import dbImg14 from "@/assets/db-assets/WhatsApp Image 2026-01-01 at 15.42.24.jpeg";
+import dbRouteLongTieng from "@/assets/db-assets/db-long-tieng.png";
+import dbRouteMuangFuang from "@/assets/db-assets/db-muang-fuang.png";
+import dbRouteVangVieng from "@/assets/db-assets/db-vang-vieng-route.png";
+import dbContractPdf from "@/assets/db-assets/contract.pdf";
+
+const dirtBikeImages = [dbImg1, dbImg2, dbImg3, dbImg4, dbImg5, dbImg6, dbImg7, dbImg8, dbImg9, dbImg10, dbImg11, dbImg12, dbImg13, dbImg14];
+const dirtBikeRoutes = [dbRouteLongTieng, dbRouteMuangFuang, dbRouteVangVieng];
+
+interface Package {
+  name: string;
+  activities: string[];
+  duration: string;
+  price: string;
+  description: string;
+  image: string;
+  additionalDetails: string;
+  isDirtBike?: boolean;
+}
+
+const packages: Package[] = [
   {
     name: "Tour 1 - Adventure & Blue Lagoon Experience",
     activities: ["Water Cave", "Elephant Cave", "Zipline", "Kayaking", "Blue Lagoon"],
@@ -58,12 +99,23 @@ const packages = [
     image: tube3,
     additionalDetails: "A compact morning adventure ideal for travelers with limited time. Explore two fascinating caves with expert guidance, then paddle your kayak back along the Nam Song River. This half-day option allows you to experience the highlights of Vang Vieng without committing your entire day.",
   },
+  {
+    name: "Dirt Bike Enduro Tours",
+    activities: ["Off-road Riding", "Mountain Trails", "Village Visits", "Waterfalls"],
+    duration: "1-Day or 2-Day Options",
+    price: "Contact for Pricing",
+    description: "Experience the raw beauty of Laos through thrilling enduro adventures on rugged mountain trails",
+    image: dbImg1,
+    additionalDetails: "Our dirt bike tours take you deep into the Laotian wilderness on high-performance Honda CRF bikes (250-300cc). Ride through remote villages, jungle trails, and discover hidden waterfalls. 1-day tours run 6-7 hours, while 2-day tours include overnight stays with routes through Long Tieng (CIA Secret Base), Phoubia Mountains, and the stunning 'Switzerland of Laos'. All equipment provided: bike, boots, helmet, and gas.",
+    isDirtBike: true,
+  },
 ];
 
 export const TourPackages = () => {
   const [selectedTour, setSelectedTour] = useState<number | null>(null);
   const [bookingModalOpen, setBookingModalOpen] = useState(false);
   const [selectedPackageName, setSelectedPackageName] = useState("");
+  const [showRoutesDialog, setShowRoutesDialog] = useState(false);
 
   const handleBookingClick = (packageName: string) => {
     setSelectedPackageName(packageName);
@@ -73,6 +125,15 @@ export const TourPackages = () => {
   const handleCustomTour = () => {
     setSelectedPackageName("Custom Tour Package");
     setBookingModalOpen(true);
+  };
+
+  const handleDownloadContract = () => {
+    const link = document.createElement('a');
+    link.href = dbContractPdf;
+    link.download = 'dirt-bike-tour-contract.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   return (
@@ -127,7 +188,7 @@ export const TourPackages = () => {
                     onClick={() => handleBookingClick(pkg.name)}
                   >
                     <MessageCircle className="h-4 w-4" />
-                    Book Package
+                    {pkg.isDirtBike ? "Contact for Pricing" : "Book Package"}
                   </Button>
                   <Button
                     variant="outline"
@@ -137,6 +198,26 @@ export const TourPackages = () => {
                     <Info className="h-4 w-4" />
                     More Info & Pictures
                   </Button>
+                  {pkg.isDirtBike && (
+                    <>
+                      <Button
+                        variant="outline"
+                        className="w-full gap-2"
+                        onClick={() => setShowRoutesDialog(true)}
+                      >
+                        <Map className="h-4 w-4" />
+                        View Routes
+                      </Button>
+                      <Button
+                        variant="secondary"
+                        className="w-full gap-2"
+                        onClick={handleDownloadContract}
+                      >
+                        <Download className="h-4 w-4" />
+                        Download Contract (PDF)
+                      </Button>
+                    </>
+                  )}
                 </div>
               </CardContent>
             </Card>
@@ -181,15 +262,35 @@ export const TourPackages = () => {
                 </DialogHeader>
                 
                 <div className="space-y-6">
-                  {/* Tour Image */}
-                  <div className="w-full rounded-lg overflow-hidden shadow-md">
-                    <img
-                      src={packages[selectedTour].image}
-                      alt={packages[selectedTour].name}
-                      className="w-full h-64 object-cover"
-                      style={{ objectPosition: "center 75%" }}
-                    />
-                  </div>
+                  {/* Tour Image Carousel for Dirt Bike or Single Image */}
+                  {packages[selectedTour].isDirtBike ? (
+                    <Carousel className="w-full">
+                      <CarouselContent>
+                        {dirtBikeImages.map((img, i) => (
+                          <CarouselItem key={i}>
+                            <div className="w-full rounded-lg overflow-hidden shadow-md">
+                              <img
+                                src={img}
+                                alt={`Dirt bike tour ${i + 1}`}
+                                className="w-full h-64 object-cover"
+                              />
+                            </div>
+                          </CarouselItem>
+                        ))}
+                      </CarouselContent>
+                      <CarouselPrevious className="left-2" />
+                      <CarouselNext className="right-2" />
+                    </Carousel>
+                  ) : (
+                    <div className="w-full rounded-lg overflow-hidden shadow-md">
+                      <img
+                        src={packages[selectedTour].image}
+                        alt={packages[selectedTour].name}
+                        className="w-full h-64 object-cover"
+                        style={{ objectPosition: "center 75%" }}
+                      />
+                    </div>
+                  )}
 
                   {/* Tour Details */}
                   <div className="space-y-4">
@@ -230,6 +331,30 @@ export const TourPackages = () => {
                       </p>
                     </div>
 
+                    {packages[selectedTour].isDirtBike && (
+                      <div className="flex gap-2">
+                        <Button
+                          variant="outline"
+                          className="flex-1 gap-2"
+                          onClick={() => {
+                            setShowRoutesDialog(true);
+                            setSelectedTour(null);
+                          }}
+                        >
+                          <Map className="h-4 w-4" />
+                          View Routes
+                        </Button>
+                        <Button
+                          variant="secondary"
+                          className="flex-1 gap-2"
+                          onClick={handleDownloadContract}
+                        >
+                          <Download className="h-4 w-4" />
+                          Download Contract
+                        </Button>
+                      </div>
+                    )}
+
                     <Button
                       className="w-full gap-2 mt-4"
                       onClick={() => {
@@ -238,12 +363,55 @@ export const TourPackages = () => {
                       }}
                     >
                       <MessageCircle className="h-4 w-4" />
-                      Book Now
+                      {packages[selectedTour].isDirtBike ? "Contact for Pricing" : "Book Now"}
                     </Button>
                   </div>
                 </div>
               </>
             )}
+          </DialogContent>
+        </Dialog>
+
+        {/* Routes Dialog for Dirt Bike */}
+        <Dialog open={showRoutesDialog} onOpenChange={setShowRoutesDialog}>
+          <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+            <DialogHeader>
+              <DialogTitle className="font-heading text-2xl">
+                Dirt Bike Tour Routes
+              </DialogTitle>
+            </DialogHeader>
+            <div className="space-y-6">
+              <p className="text-muted-foreground">
+                Explore our exciting dirt bike routes through the stunning landscapes of Laos.
+              </p>
+              <Carousel className="w-full">
+                <CarouselContent>
+                  {dirtBikeRoutes.map((route, i) => (
+                    <CarouselItem key={i}>
+                      <div className="w-full rounded-lg overflow-hidden shadow-md bg-muted p-2">
+                        <img
+                          src={route}
+                          alt={`Route map ${i + 1}`}
+                          className="w-full h-auto object-contain max-h-[60vh]"
+                        />
+                      </div>
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+                <CarouselPrevious className="left-2" />
+                <CarouselNext className="right-2" />
+              </Carousel>
+              <Button
+                className="w-full gap-2"
+                onClick={() => {
+                  handleBookingClick("Dirt Bike Enduro Tours");
+                  setShowRoutesDialog(false);
+                }}
+              >
+                <MessageCircle className="h-4 w-4" />
+                Contact for Pricing
+              </Button>
+            </div>
           </DialogContent>
         </Dialog>
 
