@@ -27,7 +27,6 @@ import dbImg4 from "@/assets/db-assets/db-img-04.jpeg";
 import dbImg5 from "@/assets/db-assets/db-img-05.jpeg";
 import dbImg6 from "@/assets/db-assets/db-img-06.jpeg";
 import dbImg7 from "@/assets/db-assets/db-img-07.jpeg";
-import dbImg8 from "@/assets/db-assets/db-img-08.jpeg";
 import dbImg9 from "@/assets/db-assets/db-img-09.jpeg";
 import dbImg10 from "@/assets/db-assets/db-img-10.jpeg";
 import dbImg11 from "@/assets/db-assets/db-img-11.jpeg";
@@ -39,7 +38,7 @@ import dbRouteMuangFuang from "@/assets/db-assets/db-muang-fuang.png";
 import dbRouteVangVieng from "@/assets/db-assets/db-vang-vieng-route.png";
 import dbContractPdf from "@/assets/db-assets/contract.pdf";
 
-const dirtBikeImages = [dbImg1, dbImg2, dbImg3, dbImg4, dbImg5, dbImg6, dbImg7, dbImg8, dbImg9, dbImg10, dbImg11, dbImg12, dbImg13, dbImg14];
+const dirtBikeImages = [dbImg1, dbImg2, dbImg3, dbImg4, dbImg5, dbImg6, dbImg7, dbImg9, dbImg10, dbImg11, dbImg12, dbImg13, dbImg14];
 const dirtBikeRoutes = [dbRouteLongTieng, dbRouteMuangFuang, dbRouteVangVieng];
 
 interface Package {
