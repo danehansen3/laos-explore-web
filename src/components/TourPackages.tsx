@@ -268,11 +268,11 @@ export const TourPackages = () => {
                       <CarouselContent>
                         {dirtBikeImages.map((img, i) => (
                           <CarouselItem key={i}>
-                            <div className="w-full rounded-lg overflow-hidden shadow-md">
+                            <div className="w-full rounded-lg overflow-hidden shadow-md bg-muted flex items-center justify-center">
                               <img
                                 src={img}
                                 alt={`Dirt bike tour ${i + 1}`}
-                                className="w-full h-64 object-cover"
+                                className="w-full h-[400px] object-contain"
                               />
                             </div>
                           </CarouselItem>
