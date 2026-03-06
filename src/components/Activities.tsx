@@ -113,7 +113,7 @@ const activities = [
     videos: ["balloon"],
     description: "Float peacefully over misty mountains and rice paddies",
     duration: "25-30 min flight (total trip ~2 hours)",
-    price: "$120 per person",
+    price: "$100 per person",
   },
   {
     id: "paramotor",
@@ -161,7 +161,7 @@ const activities = [
     name: "Dirt Biking",
     images: [db6, db1, db2, db3, db4, db5, db7],
     description: "Tackle rugged mountain trails on high-performance bikes",
-    duration: "1-day: 6-7 hours / 2-day available",
+    duration: "1-day: 7-10 hours / 2-day available",
     price: "1-day: $250/person (2 ppl) or $150/person (3 ppl)",
   },
   {
