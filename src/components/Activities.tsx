@@ -113,7 +113,7 @@ const activities = [
     videos: ["balloon"],
     description: "Float peacefully over misty mountains and rice paddies",
     duration: "25-30 min flight (total trip ~2 hours)",
-    price: "$100 (May-Sep) / $120 (Oct-Apr)",
+    price: "$120",
   },
   {
     id: "paramotor",
@@ -122,7 +122,7 @@ const activities = [
     videos: ["paramotor"],
     description: "Soar above Vang Vieng's dramatic landscape with powered flight",
     duration: "15 min flight (total trip ~1 hour)",
-    price: "$70 (May-Sep) / $95 (Oct-Apr)",
+    price: "$110",
   },
   {
     id: "climbing",
